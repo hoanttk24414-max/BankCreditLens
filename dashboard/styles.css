@@ -1541,3 +1541,3738 @@ body:has(.st-key-criterion_detail_page) [data-testid="stMainBlockContainer"] {
   .criterion-metrics { grid-template-columns:1fr; }
   .criterion-metric:last-child { grid-column:auto; }
 }
+
+/* ========================================================================== 
+   FINAL UI LOCK — keep native Streamlit controls LIGHT in every browser theme
+   ========================================================================== */
+html,
+body,
+[data-testid="stApp"],
+[data-testid="stAppViewContainer"],
+[data-testid="stMain"],
+[data-testid="stMainBlockContainer"] {
+  color-scheme: light !important;
+}
+
+/* Text/search/number/date/time/select/multiselect controls */
+[data-testid="stTextInput"],
+[data-testid="stTextInput"] > div,
+[data-testid="stTextInput"] input,
+[data-testid="stNumberInput"],
+[data-testid="stNumberInput"] > div,
+[data-testid="stNumberInput"] input,
+[data-testid="stDateInput"],
+[data-testid="stDateInput"] > div,
+[data-testid="stDateInput"] input,
+[data-testid="stTimeInput"],
+[data-testid="stTimeInput"] > div,
+[data-testid="stTimeInput"] input,
+[data-testid="stTextArea"],
+[data-testid="stTextArea"] textarea,
+[data-testid="stSelectbox"] [data-baseweb="select"] > div,
+[data-testid="stMultiSelect"] [data-baseweb="select"] > div,
+[data-testid="stMultiSelectTagsContainer"],
+.react-aria-ComboBox,
+.react-aria-ComboBox [role="group"],
+.react-aria-TextField,
+.react-aria-TextField input,
+input[role="combobox"] {
+  color-scheme: light !important;
+  background: #ffffff !important;
+  color: #132c63 !important;
+  -webkit-text-fill-color: #132c63 !important;
+  caret-color: #1262e8 !important;
+  border-color: #c9dced !important;
+}
+
+[data-testid="stTextInput"] input::placeholder,
+[data-testid="stNumberInput"] input::placeholder,
+[data-testid="stDateInput"] input::placeholder,
+[data-testid="stTimeInput"] input::placeholder,
+[data-testid="stTextArea"] textarea::placeholder,
+input[role="combobox"]::placeholder {
+  color: #7890b1 !important;
+  -webkit-text-fill-color: #7890b1 !important;
+  opacity: 1 !important;
+}
+
+[data-testid="stTextInput"]:focus-within > div,
+[data-testid="stNumberInput"]:focus-within > div,
+[data-testid="stDateInput"]:focus-within > div,
+[data-testid="stTimeInput"]:focus-within > div,
+[data-testid="stTextArea"]:focus-within > div,
+[data-testid="stSelectbox"] [data-baseweb="select"]:focus-within > div,
+[data-testid="stMultiSelect"]:focus-within [data-testid="stMultiSelectTagsContainer"],
+.react-aria-ComboBox:focus-within [role="group"] {
+  background: #ffffff !important;
+  border-color: #347fd7 !important;
+  box-shadow: 0 0 0 3px #347fd726 !important;
+}
+
+/* Select/multiselect popovers must also stay light. */
+[data-baseweb="popover"],
+[data-baseweb="popover"] > div,
+[data-baseweb="menu"],
+[data-baseweb="menu"] > div,
+[role="listbox"],
+[role="listbox"] > div,
+[role="option"] {
+  color-scheme: light !important;
+  background: #ffffff !important;
+  color: #132c63 !important;
+}
+
+[role="option"]:hover,
+[role="option"][aria-selected="true"],
+[data-baseweb="menu"] li:hover,
+[data-baseweb="menu"] li[aria-selected="true"] {
+  background: #eef6ff !important;
+  color: #0e5ebc !important;
+}
+
+/* ALL expanders: prevent black headers/content when browser/OS is in dark mode. */
+[data-testid="stExpander"] {
+  color-scheme: light !important;
+}
+
+[data-testid="stExpander"] details {
+  color-scheme: light !important;
+  overflow: hidden !important;
+  background: #ffffff !important;
+  color: #10285f !important;
+  border: 1px solid #cfe0f2 !important;
+  border-radius: 12px !important;
+  box-shadow: inset 0 1px 0 #ffffff, 0 5px 14px #2863a410 !important;
+}
+
+[data-testid="stExpander"] summary {
+  color-scheme: light !important;
+  background: linear-gradient(100deg, #f7fbff, #edf5ff) !important;
+  color: #10285f !important;
+  min-height: 46px !important;
+  border: 0 !important;
+}
+
+[data-testid="stExpander"] summary:hover {
+  background: linear-gradient(100deg, #f0f8ff, #e7f2ff) !important;
+}
+
+[data-testid="stExpander"] summary p,
+[data-testid="stExpander"] summary span,
+[data-testid="stExpander"] summary div {
+  color: #10285f !important;
+  -webkit-text-fill-color: #10285f !important;
+}
+
+[data-testid="stExpander"] summary svg,
+[data-testid="stExpander"] summary [data-testid="stIconMaterial"] {
+  color: #347fd7 !important;
+  fill: currentColor !important;
+}
+
+[data-testid="stExpander"] details > div,
+[data-testid="stExpander"] [data-testid="stMarkdownContainer"],
+[data-testid="stExpander"] [data-testid="stMarkdownContainer"] p,
+[data-testid="stExpander"] [data-testid="stMarkdownContainer"] strong,
+[data-testid="stExpander"] [data-testid="stMarkdownContainer"] span {
+  background: #ffffff !important;
+  color: #10285f !important;
+  -webkit-text-fill-color: #10285f !important;
+}
+
+/* Keep native buttons light unless a route has its own explicit design. */
+[data-testid="stMain"] [data-testid="stButton"] button,
+[data-testid="stMain"] [data-testid="stDownloadButton"] button {
+  color-scheme: light !important;
+  background: #ffffff !important;
+  color: #174b86 !important;
+  border-color: #c9dced !important;
+}
+
+[data-testid="stMain"] [data-testid="stButton"] button:hover,
+[data-testid="stMain"] [data-testid="stDownloadButton"] button:hover {
+  background: #eef6ff !important;
+  border-color: #8db8e6 !important;
+  color: #0e5ebc !important;
+}
+
+/* =========================================================
+   FORCE STREAMLIT CHECKBOXES TO STAY LIGHT
+   Prevent black checkbox boxes from browser / OS dark mode.
+   ========================================================= */
+html,
+body,
+[data-testid="stApp"],
+[data-testid="stAppViewContainer"],
+[data-testid="stMain"] {
+  color-scheme: light only !important;
+}
+
+[data-testid="stCheckbox"],
+[data-testid="stCheckbox"] label,
+[data-baseweb="checkbox"] {
+  color-scheme: light only !important;
+}
+
+/* BaseWeb visual checkbox box. */
+[data-testid="stCheckbox"] [data-baseweb="checkbox"] > span:first-child > div,
+[data-testid="stCheckbox"] label > span:first-child > div {
+  box-sizing: border-box !important;
+  width: 20px !important;
+  height: 20px !important;
+  min-width: 20px !important;
+  min-height: 20px !important;
+  border-radius: 5px !important;
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  border: 1.5px solid #9db8d7 !important;
+  box-shadow: inset 0 1px 0 #ffffff, 0 1px 2px #1d4c7d12 !important;
+  filter: none !important;
+}
+
+/* Checked state. */
+[data-testid="stCheckbox"] [data-baseweb="checkbox"]:has(input[type="checkbox"]:checked) > span:first-child > div,
+[data-testid="stCheckbox"] label:has(input[type="checkbox"]:checked) > span:first-child > div {
+  background: #1677e8 !important;
+  background-color: #1677e8 !important;
+  border-color: #1677e8 !important;
+}
+
+/* Check mark. */
+[data-testid="stCheckbox"] [data-baseweb="checkbox"] > span:first-child > div svg,
+[data-testid="stCheckbox"] label > span:first-child > div svg {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+/* Keep the real form control from inheriting a dark UA theme. */
+[data-testid="stCheckbox"] input[type="checkbox"] {
+  color-scheme: light only !important;
+  accent-color: #1677e8 !important;
+}
+
+/* Checkbox label text. */
+[data-testid="stCheckbox"] label p,
+[data-testid="stCheckbox"] label span,
+[data-testid="stCheckbox"] [data-testid="stMarkdownContainer"] p {
+  color: #17346c !important;
+  -webkit-text-fill-color: #17346c !important;
+}
+
+/* =========================================================
+   PROFESSIONAL BLUE REPORT THEME — FINAL OVERRIDE
+   Clean report style · blue ombre · subtle motion · no mascots
+   ========================================================= */
+
+:root {
+    --report-navy: #0B1F4D;
+    --report-ink: #17305F;
+    --report-text: #2D4A78;
+    --report-muted: #6C83A7;
+
+    --report-blue: #2563EB;
+    --report-blue-2: #3B82F6;
+    --report-sky: #38BDF8;
+    --report-cyan: #22D3EE;
+
+    --report-bg: #F4F8FE;
+    --report-bg-2: #ECF4FF;
+    --report-surface: rgba(255,255,255,.94);
+    --report-surface-soft: rgba(248,251,255,.94);
+    --report-border: #D8E6F5;
+    --report-border-strong: #C6D9EE;
+
+    --report-shadow:
+        0 14px 35px rgba(31, 79, 143, .08),
+        0 2px 8px rgba(31, 79, 143, .04);
+
+    --report-shadow-hover:
+        0 18px 42px rgba(37, 99, 235, .12),
+        0 5px 14px rgba(31, 79, 143, .06);
+}
+
+/* ---------------------------------------------------------
+   Global canvas
+   --------------------------------------------------------- */
+
+html,
+body,
+.stApp,
+[data-testid="stAppViewContainer"],
+[data-testid="stMain"],
+[data-testid="stMainBlockContainer"] {
+    color-scheme: light !important;
+}
+
+body,
+.stApp,
+[data-testid="stAppViewContainer"] {
+    color: var(--report-text) !important;
+    background:
+        radial-gradient(circle at 91% 3%, rgba(56,189,248,.18), transparent 24%),
+        radial-gradient(circle at 4% 96%, rgba(37,99,235,.10), transparent 28%),
+        linear-gradient(
+            135deg,
+            #F8FBFF 0%,
+            #F2F7FD 45%,
+            #EAF3FF 100%
+        ) !important;
+}
+
+[data-testid="stMainBlockContainer"] {
+    max-width: 1680px !important;
+    padding-top: 1.05rem !important;
+    padding-bottom: 2rem !important;
+}
+
+/* Remove any old mascot/cute artwork if stale markup is cached. */
+.loopy-mascot,
+.loopy-image,
+.loopy-bubble,
+.cute-svg-sticker,
+.metric-sticker {
+    display: none !important;
+}
+
+/* ---------------------------------------------------------
+   Sidebar
+   --------------------------------------------------------- */
+
+[data-testid="stSidebar"] {
+    background:
+        radial-gradient(circle at 30% 2%, rgba(96,165,250,.16), transparent 26%),
+        linear-gradient(180deg, #FFFFFF 0%, #F5F9FF 55%, #EDF5FF 100%) !important;
+    border-right: 1px solid var(--report-border) !important;
+    box-shadow: 10px 0 30px rgba(31,79,143,.05) !important;
+}
+
+[data-testid="stSidebarContent"] {
+    padding: 14px 15px 18px !important;
+}
+
+.sidebar-brand strong {
+    color: var(--report-navy) !important;
+    -webkit-text-fill-color: var(--report-navy) !important;
+    font-weight: 850 !important;
+    letter-spacing: -.3px;
+}
+
+.sidebar-brand span {
+    color: #5F78A0 !important;
+    -webkit-text-fill-color: #5F78A0 !important;
+    font-weight: 550 !important;
+}
+
+.brand-mark {
+    color: #FFFFFF !important;
+    background:
+        linear-gradient(135deg, #1D4ED8 0%, #2563EB 48%, #38BDF8 100%) !important;
+    border: 1px solid #70B7F0 !important;
+    box-shadow: 0 8px 18px rgba(37,99,235,.18) !important;
+}
+
+/* Sidebar navigation */
+[data-testid="stSidebar"] [role="radiogroup"] {
+    gap: 6px !important;
+}
+
+[data-testid="stSidebar"] [role="radiogroup"] label {
+    min-height: 45px !important;
+    padding: 10px 12px !important;
+    border: 1px solid transparent !important;
+    border-radius: 12px !important;
+    color: #405B87 !important;
+    background: transparent !important;
+    transition:
+        transform .16s ease,
+        background .16s ease,
+        border-color .16s ease,
+        box-shadow .16s ease !important;
+}
+
+[data-testid="stSidebar"] [role="radiogroup"] label p,
+[data-testid="stSidebar"] [role="radiogroup"] label span {
+    color: #405B87 !important;
+    -webkit-text-fill-color: #405B87 !important;
+    opacity: 1 !important;
+    font-weight: 620 !important;
+}
+
+[data-testid="stSidebar"] [role="radiogroup"] label svg {
+    color: #5978A5 !important;
+    stroke: #5978A5 !important;
+}
+
+[data-testid="stSidebar"] [role="radiogroup"] label:hover {
+    transform: translateX(2px);
+    border-color: #D6E6F7 !important;
+    background: linear-gradient(90deg, #F7FBFF, #EEF6FF) !important;
+}
+
+[data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked) {
+    background:
+        linear-gradient(
+            135deg,
+            #123F98 0%,
+            #2563EB 55%,
+            #38BDF8 100%
+        ) !important;
+    border-color: #4DA7E8 !important;
+    box-shadow:
+        0 10px 22px rgba(37,99,235,.18),
+        inset 0 1px 0 rgba(255,255,255,.28) !important;
+}
+
+[data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked) p,
+[data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked) span {
+    color: #FFFFFF !important;
+    -webkit-text-fill-color: #FFFFFF !important;
+    font-weight: 760 !important;
+}
+
+[data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked) svg {
+    color: #FFFFFF !important;
+    stroke: #FFFFFF !important;
+}
+
+/* Sidebar information cards */
+.sidebar-model,
+.sidebar-context {
+    background:
+        linear-gradient(145deg, rgba(255,255,255,.98), rgba(241,247,255,.96)) !important;
+    border: 1px solid var(--report-border) !important;
+    border-radius: 14px !important;
+    box-shadow: 0 8px 22px rgba(31,79,143,.06) !important;
+}
+
+.sidebar-model .object-icon {
+    background: linear-gradient(135deg, #E8F2FF, #DDF3FF) !important;
+    color: #2563EB !important;
+}
+
+.sidebar-model strong,
+.sidebar-context strong {
+    color: var(--report-navy) !important;
+    -webkit-text-fill-color: var(--report-navy) !important;
+}
+
+.sidebar-model p,
+.sidebar-context p {
+    color: #667E9F !important;
+    -webkit-text-fill-color: #667E9F !important;
+    opacity: 1 !important;
+}
+
+[data-testid="stSidebar"] [data-testid="stButton"] button {
+    min-height: 43px !important;
+    color: #1D4ED8 !important;
+    -webkit-text-fill-color: #1D4ED8 !important;
+    background: #FFFFFF !important;
+    border: 1px solid #C7DCF2 !important;
+    border-radius: 11px !important;
+    box-shadow: 0 6px 15px rgba(31,79,143,.06) !important;
+    font-weight: 700 !important;
+}
+
+[data-testid="stSidebar"] [data-testid="stButton"] button:hover {
+    color: #FFFFFF !important;
+    -webkit-text-fill-color: #FFFFFF !important;
+    background: linear-gradient(135deg, #1D4ED8, #2563EB, #38BDF8) !important;
+    border-color: #4FA7E5 !important;
+}
+
+/* Sidebar report illustration */
+.sidebar-illustration {
+    margin-top: 12px !important;
+    padding-top: 4px !important;
+}
+
+.sidebar-illustration .report-art-sidebar {
+    width: 100% !important;
+    max-width: 205px !important;
+    margin: 0 auto !important;
+    opacity: .92;
+}
+
+.sidebar-illustration p {
+    color: #4A6D9E !important;
+    -webkit-text-fill-color: #4A6D9E !important;
+    font-weight: 720 !important;
+}
+
+/* ---------------------------------------------------------
+   Header / hero
+   --------------------------------------------------------- */
+
+.page-heading {
+    position: relative !important;
+    isolation: isolate !important;
+    overflow: hidden !important;
+    min-height: 126px !important;
+    padding: 20px 22px !important;
+    border: 1px solid #D6E5F5 !important;
+    border-radius: 20px !important;
+    background:
+        radial-gradient(circle at 78% 20%, rgba(56,189,248,.22), transparent 25%),
+        radial-gradient(circle at 92% 100%, rgba(37,99,235,.16), transparent 24%),
+        linear-gradient(
+            115deg,
+            rgba(255,255,255,.98) 0%,
+            rgba(245,249,255,.98) 52%,
+            rgba(230,241,255,.97) 100%
+        ) !important;
+    box-shadow: var(--report-shadow) !important;
+}
+
+.page-heading::before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    width: 280px;
+    height: 280px;
+    right: 13%;
+    top: -185px;
+    border: 1px solid rgba(59,130,246,.18);
+    border-radius: 50%;
+    box-shadow:
+        0 0 0 28px rgba(96,165,250,.05),
+        0 0 0 58px rgba(56,189,248,.035);
+}
+
+.page-heading::after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    right: 12%;
+    bottom: 10px;
+    width: 170px;
+    height: 3px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, transparent, #60A5FA, #38BDF8, transparent);
+    opacity: .62;
+}
+
+.page-heading .heading-copy {
+    position: relative !important;
+    z-index: 3 !important;
+    max-width: calc(100% - 430px) !important;
+    padding-right: 0 !important;
+}
+
+.page-context {
+    color: #2563EB !important;
+    -webkit-text-fill-color: #2563EB !important;
+    font-weight: 760 !important;
+    letter-spacing: .015em !important;
+}
+
+.page-heading h1 {
+    max-width: 860px !important;
+    margin: 4px 0 7px !important;
+    color: var(--report-navy) !important;
+    -webkit-text-fill-color: var(--report-navy) !important;
+    font-weight: 860 !important;
+    line-height: 1.12 !important;
+    letter-spacing: -.75px !important;
+}
+
+.page-heading p {
+    max-width: 800px !important;
+    color: #587198 !important;
+    -webkit-text-fill-color: #587198 !important;
+    opacity: 1 !important;
+}
+
+.page-heading .header-art {
+    position: absolute !important;
+    z-index: 2 !important;
+    right: 156px !important;
+    top: 3px !important;
+    width: 255px !important;
+    height: 118px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    pointer-events: none !important;
+}
+
+.report-art-header,
+.report-art-sidebar {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.report-art-image {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    object-position: center !important;
+}
+
+.report-art-header {
+    opacity: .98;
+    filter: drop-shadow(0 10px 16px rgba(37,99,235,.13));
+    animation: reportArtFloat 5.5s ease-in-out infinite;
+}
+
+.report-art-header .report-art-image {
+    transform: scale(1.05);
+}
+
+.report-art-sidebar .report-art-image {
+    max-width: 215px !important;
+    height: auto !important;
+    margin: 0 auto !important;
+    filter:
+        saturate(.92)
+        contrast(1.03)
+        drop-shadow(0 10px 16px rgba(37,99,235,.11));
+}
+
+@keyframes reportArtFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+}
+
+.page-heading .year-card {
+    position: absolute !important;
+    z-index: 4 !important;
+    right: 12px !important;
+    top: 29px !important;
+    width: 138px !important;
+    min-width: 138px !important;
+    background:
+        linear-gradient(145deg, rgba(255,255,255,.98), rgba(244,249,255,.96)) !important;
+    border: 1px solid #D4E3F3 !important;
+    border-radius: 14px !important;
+    box-shadow: 0 8px 20px rgba(31,79,143,.07) !important;
+}
+
+.page-heading .year-card span {
+    color: #6E82A0 !important;
+    -webkit-text-fill-color: #6E82A0 !important;
+}
+
+.page-heading .year-card strong {
+    color: var(--report-navy) !important;
+    -webkit-text-fill-color: var(--report-navy) !important;
+}
+
+/* ---------------------------------------------------------
+   Panel surfaces
+   --------------------------------------------------------- */
+
+[class*="st-key-panel_"] {
+    position: relative !important;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.97),
+            rgba(248,251,255,.95)
+        ) !important;
+    border: 1px solid var(--report-border) !important;
+    border-radius: 16px !important;
+    box-shadow: var(--report-shadow) !important;
+    backdrop-filter: blur(10px);
+    transition:
+        transform .18s ease,
+        box-shadow .18s ease,
+        border-color .18s ease !important;
+}
+
+[class*="st-key-panel_"]:hover {
+    border-color: #CADFF3 !important;
+    box-shadow: var(--report-shadow-hover) !important;
+}
+
+.section-heading h2 {
+    color: var(--report-navy) !important;
+    -webkit-text-fill-color: var(--report-navy) !important;
+    font-weight: 820 !important;
+}
+
+.section-heading p {
+    color: var(--report-muted) !important;
+    -webkit-text-fill-color: var(--report-muted) !important;
+    opacity: 1 !important;
+}
+
+/* Icon system in one professional family */
+.object-icon {
+    border-radius: 14px !important;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.65) !important;
+}
+
+.object-icon.blue,
+.object-icon.violet,
+.object-icon.gold,
+.object-icon.teal {
+    color: #2563EB !important;
+    background:
+        linear-gradient(135deg, #EAF2FF, #DFF3FF) !important;
+}
+
+/* ---------------------------------------------------------
+   Metric tiles
+   --------------------------------------------------------- */
+
+.metric-grid {
+    gap: 12px !important;
+}
+
+.metric-tile {
+    min-height: 94px !important;
+    border: 1px solid #D9E7F5 !important;
+    border-radius: 15px !important;
+    box-shadow: 0 8px 22px rgba(31,79,143,.055) !important;
+    background:
+        linear-gradient(140deg, #FFFFFF 0%, #F4F9FF 100%) !important;
+    transition:
+        transform .18s ease,
+        box-shadow .18s ease,
+        border-color .18s ease !important;
+}
+
+.metric-tile:nth-child(1) {
+    background: linear-gradient(135deg, #FFFFFF, #EEF7FF) !important;
+}
+.metric-tile:nth-child(2) {
+    background: linear-gradient(135deg, #FFFFFF, #EDF4FF) !important;
+}
+.metric-tile:nth-child(3) {
+    background: linear-gradient(135deg, #FFFFFF, #EAF8FF) !important;
+}
+.metric-tile:nth-child(4) {
+    background: linear-gradient(135deg, #FFFFFF, #F0F5FF) !important;
+}
+
+.metric-tile:hover {
+    transform: translateY(-2px) !important;
+    border-color: #BFD8F0 !important;
+    box-shadow: var(--report-shadow-hover) !important;
+}
+
+.metric-value {
+    color: var(--report-navy) !important;
+    -webkit-text-fill-color: var(--report-navy) !important;
+    font-weight: 860 !important;
+}
+
+.metric-label {
+    color: #314F7C !important;
+    -webkit-text-fill-color: #314F7C !important;
+    font-weight: 720 !important;
+}
+
+.metric-note {
+    color: #7185A4 !important;
+    -webkit-text-fill-color: #7185A4 !important;
+    opacity: 1 !important;
+}
+
+/* ---------------------------------------------------------
+   Inputs / controls
+   --------------------------------------------------------- */
+
+[data-baseweb="select"] > div,
+[data-baseweb="input"] > div,
+[data-baseweb="textarea"] > div,
+[data-testid="stTextInput"] input,
+[data-testid="stNumberInput"] input,
+[data-testid="stDateInput"] input,
+[data-testid="stTimeInput"] input,
+textarea {
+    color: var(--report-ink) !important;
+    background: #FFFFFF !important;
+    border: 1px solid #CBDDEE !important;
+    border-radius: 11px !important;
+    box-shadow: none !important;
+}
+
+[data-baseweb="select"] > div:hover,
+[data-baseweb="input"] > div:hover,
+[data-testid="stTextInput"] input:hover {
+    border-color: #9FC5E8 !important;
+}
+
+[data-baseweb="select"] > div:focus-within,
+[data-baseweb="input"] > div:focus-within,
+[data-testid="stTextInput"] input:focus {
+    border-color: #3B82F6 !important;
+    box-shadow: 0 0 0 3px rgba(59,130,246,.10) !important;
+}
+
+[data-testid="stCheckbox"] input[type="checkbox"] {
+    accent-color: #2563EB !important;
+}
+
+/* Buttons */
+[data-testid="stButton"] button,
+[data-testid="stDownloadButton"] button {
+    color: #1D4ED8 !important;
+    -webkit-text-fill-color: #1D4ED8 !important;
+    background:
+        linear-gradient(135deg, #FFFFFF, #F2F7FF) !important;
+    border: 1px solid #C9DBEE !important;
+    border-radius: 11px !important;
+    font-weight: 720 !important;
+    box-shadow: 0 6px 14px rgba(31,79,143,.05) !important;
+}
+
+[data-testid="stButton"] button:hover,
+[data-testid="stDownloadButton"] button:hover {
+    color: #FFFFFF !important;
+    -webkit-text-fill-color: #FFFFFF !important;
+    background:
+        linear-gradient(135deg, #1D4ED8, #2563EB 55%, #38BDF8) !important;
+    border-color: #4B9FDE !important;
+}
+
+/* ---------------------------------------------------------
+   Tables
+   --------------------------------------------------------- */
+
+.ranking-wrap,
+.criterion-table-wrap,
+.comparison-matrix-wrap {
+    border: 1px solid #D7E5F3 !important;
+    border-radius: 12px !important;
+    background: rgba(255,255,255,.96) !important;
+    overflow: hidden !important;
+}
+
+.ranking-table th,
+.criterion-table th,
+.comparison-matrix thead th {
+    color: #3E5B83 !important;
+    background:
+        linear-gradient(90deg, #EEF5FF, #EAF4FF) !important;
+    border-color: #DCE8F5 !important;
+}
+
+.ranking-table td,
+.criterion-table td,
+.comparison-matrix td,
+.comparison-matrix tbody th {
+    color: #294976 !important;
+    border-color: #E0EAF5 !important;
+}
+
+.ranking-table tbody tr,
+.criterion-table tbody tr {
+    background: rgba(255,255,255,.94) !important;
+}
+
+.ranking-table tbody tr:nth-child(even),
+.criterion-table tbody tr:nth-child(even) {
+    background: #F8FBFF !important;
+}
+
+.ranking-table tbody tr:hover,
+.criterion-table tbody tr:hover {
+    background: #EEF6FF !important;
+}
+
+.ranking-table tbody tr.ranking-leader {
+    background:
+        linear-gradient(90deg, #E8F7FF, #F2F8FF) !important;
+}
+
+.criterion-selected {
+    background:
+        linear-gradient(90deg, #E5F2FF, #F5FAFF) !important;
+}
+
+/* Chips / badges */
+.ticker,
+.criterion-group-chip,
+.status,
+.direction-badge,
+.digital-token {
+    border-radius: 999px !important;
+}
+
+.direction-badge.direction-low,
+.direction-badge.direction-high,
+.direction-badge.direction-fixed {
+    color: #1D4ED8 !important;
+    background: #EAF3FF !important;
+    border-color: #C5DBF2 !important;
+}
+
+/* ---------------------------------------------------------
+   Criterion detail — fix clipping/overflow
+   --------------------------------------------------------- */
+
+.st-key-panel_criterion_detail {
+    overflow: hidden !important;
+    min-width: 0 !important;
+}
+
+.criterion-detail-identity,
+.criterion-metadata,
+.criterion-metrics-title,
+.criterion-metrics {
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+.criterion-detail-identity strong,
+.criterion-metrics-title {
+    color: var(--report-navy) !important;
+    -webkit-text-fill-color: var(--report-navy) !important;
+}
+
+.criterion-metadata {
+    overflow: hidden !important;
+}
+
+.criterion-metadata p {
+    min-width: 0 !important;
+}
+
+.criterion-metadata span,
+.criterion-metadata strong {
+    min-width: 0 !important;
+    overflow-wrap: anywhere !important;
+}
+
+.criterion-metrics {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+    width: 100% !important;
+    min-width: 0 !important;
+}
+
+.criterion-metric {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+    border: 1px solid #D9E7F5 !important;
+    border-radius: 13px !important;
+    background:
+        linear-gradient(135deg, #FFFFFF, #F2F8FF) !important;
+    box-shadow: 0 7px 18px rgba(31,79,143,.055) !important;
+}
+
+.criterion-metric:last-child {
+    grid-column: 1 / -1 !important;
+}
+
+.criterion-metric.tone-blue,
+.criterion-metric.tone-violet,
+.criterion-metric.tone-teal,
+.criterion-metric.tone-gold {
+    background:
+        linear-gradient(135deg, #FFFFFF, #EDF6FF) !important;
+}
+
+.criterion-metric strong {
+    color: #173B72 !important;
+    -webkit-text-fill-color: #173B72 !important;
+}
+
+/* ---------------------------------------------------------
+   Digital cards
+   --------------------------------------------------------- */
+
+.digital-card {
+    border: 1px solid #D7E6F5 !important;
+    border-radius: 14px !important;
+    background:
+        linear-gradient(135deg, #FFFFFF, #F2F8FF) !important;
+    box-shadow: 0 8px 22px rgba(31,79,143,.06) !important;
+}
+
+.st-key-digital_page .digital-card.tone-violet,
+.st-key-digital_page .digital-card.tone-teal,
+.st-key-digital_page .digital-card.tone-blue {
+    background:
+        linear-gradient(120deg, #FFFFFF 45%, #EEF6FF 100%) !important;
+}
+
+.st-key-digital_page .digital-card::after {
+    background: #DBEEFF !important;
+    opacity: .42 !important;
+}
+
+.digital-value {
+    color: #1D4ED8 !important;
+    -webkit-text-fill-color: #1D4ED8 !important;
+}
+
+/* ---------------------------------------------------------
+   Comparison cards / analysis
+   --------------------------------------------------------- */
+
+.bank-mini {
+    background:
+        linear-gradient(145deg, #FFFFFF, #F5F9FF) !important;
+    border: 1px solid #D9E7F4 !important;
+    border-top: 3px solid color-mix(in srgb, var(--bank) 55%, #4C8CE5) !important;
+    border-radius: 13px !important;
+    box-shadow: 0 8px 20px rgba(31,79,143,.055) !important;
+}
+
+.analysis-row {
+    border: 1px solid #DCE8F4 !important;
+    border-radius: 11px !important;
+    background: #FFFFFF !important;
+    box-shadow: 0 5px 13px rgba(31,79,143,.045) !important;
+}
+
+.analysis-row:hover {
+    background: #F5F9FF !important;
+    border-color: #C4DCF1 !important;
+}
+
+.analysis-arrow {
+    color: #2563EB !important;
+    background: #EAF3FF !important;
+}
+
+.analysis-detail {
+    color: #34527E !important;
+    background:
+        linear-gradient(135deg, #FFFFFF, #F2F8FF) !important;
+    border-color: #D5E5F4 !important;
+}
+
+.matrix-best {
+    background: #E8F3FF !important;
+    box-shadow: inset 0 0 0 1px #C1DCF4 !important;
+}
+
+.matrix-total {
+    background: #F0F6FF !important;
+}
+
+/* ---------------------------------------------------------
+   Source / methodology
+   --------------------------------------------------------- */
+
+.st-key-sources_page .metric-tile:nth-child(1),
+.st-key-sources_page .metric-tile:nth-child(2),
+.st-key-sources_page .metric-tile:nth-child(3),
+.st-key-sources_page .metric-tile:nth-child(4) {
+    background:
+        linear-gradient(135deg, #FFFFFF, #F0F7FF) !important;
+}
+
+.st-key-sources_page .source-summary,
+.st-key-sources_page .weight-card {
+    color: #34527D !important;
+    background:
+        linear-gradient(135deg, #F7FBFF, #EDF6FF) !important;
+    border: 1px solid #D6E5F3 !important;
+}
+
+.st-key-sources_page .source-summary-title strong,
+.st-key-sources_page .weight-head strong {
+    color: var(--report-navy) !important;
+}
+
+/* Disclaimer */
+.st-key-panel_disclaimer {
+    background:
+        linear-gradient(135deg, #F5FAFF, #ECF5FF) !important;
+    border-color: #CFE1F2 !important;
+}
+
+.disclaimer-copy {
+    color: #486A95 !important;
+}
+
+/* ---------------------------------------------------------
+   Expanders
+   --------------------------------------------------------- */
+
+[data-testid="stExpander"] details {
+    overflow: hidden !important;
+    background: #FFFFFF !important;
+    border: 1px solid #D6E5F3 !important;
+    border-radius: 12px !important;
+}
+
+[data-testid="stExpander"] summary {
+    color: var(--report-navy) !important;
+    background:
+        linear-gradient(90deg, #F8FBFF, #EDF5FF) !important;
+}
+
+[data-testid="stExpander"] summary p,
+[data-testid="stExpander"] summary span {
+    color: var(--report-navy) !important;
+    -webkit-text-fill-color: var(--report-navy) !important;
+}
+
+[data-testid="stExpanderDetails"] {
+    background: #FFFFFF !important;
+}
+
+/* ---------------------------------------------------------
+   Plotly shell
+   --------------------------------------------------------- */
+
+[data-testid="stPlotlyChart"] {
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    background:
+        linear-gradient(180deg, rgba(255,255,255,.98), rgba(247,251,255,.98)) !important;
+}
+
+/* ---------------------------------------------------------
+   Quick insight
+   --------------------------------------------------------- */
+
+.st-key-panel_overview_quick_insight {
+    overflow: hidden !important;
+    background:
+        linear-gradient(
+            115deg,
+            #FFFFFF 0%,
+            #F1F7FF 58%,
+            #E6F3FF 100%
+        ) !important;
+}
+
+.st-key-panel_overview_quick_insight::after {
+    content: "";
+    position: absolute;
+    right: -35px;
+    bottom: -48px;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle, rgba(56,189,248,.18), rgba(37,99,235,.04) 62%, transparent 64%);
+    pointer-events: none;
+}
+
+/* ---------------------------------------------------------
+   Responsive
+   --------------------------------------------------------- */
+
+@media (max-width: 1350px) {
+    .page-heading .heading-copy {
+        max-width: calc(100% - 355px) !important;
+    }
+
+    .page-heading .header-art {
+        right: 145px !important;
+        width: 210px !important;
+    }
+}
+
+@media (max-width: 1100px) {
+    .page-heading .header-art {
+        display: none !important;
+    }
+
+    .page-heading .heading-copy {
+        max-width: calc(100% - 155px) !important;
+    }
+
+    .criterion-metrics {
+        grid-template-columns: 1fr !important;
+    }
+
+    .criterion-metric:last-child {
+        grid-column: auto !important;
+    }
+}
+
+@media (max-width: 760px) {
+    .page-heading {
+        min-height: 116px !important;
+        padding: 17px !important;
+    }
+
+    .page-heading .year-card {
+        position: static !important;
+        width: fit-content !important;
+        min-width: 0 !important;
+        margin-top: 10px !important;
+    }
+
+    .page-heading .heading-copy {
+        max-width: 100% !important;
+    }
+
+    .metric-grid {
+        gap: 8px !important;
+    }
+
+    .metric-tile {
+        border-radius: 13px !important;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .report-art-header,
+    [class*="st-key-panel_"],
+    .metric-tile {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* =========================================================
+   CLEAN BLUE PRIORITY — no pink remnants
+   ========================================================= */
+
+body:has(.st-key-overview_page) [data-testid="stSidebar"],
+body:has(.st-key-comparison_page) [data-testid="stSidebar"],
+body:has(.st-key-criterion_page) [data-testid="stSidebar"],
+body:has(.st-key-digital_page) [data-testid="stSidebar"],
+body:has(.st-key-sources_page) [data-testid="stSidebar"],
+[data-testid="stSidebar"] {
+    background:
+        radial-gradient(circle at 18% 4%, rgba(96,165,250,.15), transparent 28%),
+        linear-gradient(180deg, #FFFFFF 0%, #F7FAFF 52%, #EDF5FF 100%) !important;
+    border-right: 1px solid #D5E4F3 !important;
+    box-shadow: 9px 0 28px rgba(31,79,143,.055) !important;
+}
+
+body:has(.st-key-overview_page) .page-heading,
+body:has(.st-key-comparison_page) .page-heading,
+body:has(.st-key-criterion_page) .page-heading,
+body:has(.st-key-digital_page) .page-heading,
+body:has(.st-key-sources_page) .page-heading,
+.page-heading {
+    border-color: #D3E4F5 !important;
+    background:
+        radial-gradient(circle at 80% 18%, rgba(56,189,248,.19), transparent 25%),
+        radial-gradient(circle at 94% 100%, rgba(37,99,235,.14), transparent 24%),
+        linear-gradient(115deg, #FFFFFF 0%, #F6FAFF 51%, #E9F4FF 100%) !important;
+    box-shadow:
+        0 15px 38px rgba(31,79,143,.085),
+        0 2px 8px rgba(31,79,143,.035) !important;
+}
+
+body:has(.st-key-overview_page) .page-context,
+body:has(.st-key-comparison_page) .page-context,
+body:has(.st-key-criterion_page) .page-context,
+body:has(.st-key-digital_page) .page-context,
+body:has(.st-key-sources_page) .page-context,
+.page-context {
+    color: #2563EB !important;
+    -webkit-text-fill-color: #2563EB !important;
+}
+
+body:has(.st-key-overview_page) [class*="st-key-panel_"],
+body:has(.st-key-comparison_page) [class*="st-key-panel_"],
+body:has(.st-key-criterion_page) [class*="st-key-panel_"],
+body:has(.st-key-digital_page) [class*="st-key-panel_"],
+body:has(.st-key-sources_page) [class*="st-key-panel_"] {
+    border-color: #D8E6F4 !important;
+    background:
+        linear-gradient(145deg, rgba(255,255,255,.98), rgba(247,251,255,.96)) !important;
+}
+
+/* Every active nav state is blue — no inherited pink. */
+body:has(.st-key-overview_page) [data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked),
+body:has(.st-key-comparison_page) [data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked),
+body:has(.st-key-criterion_page) [data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked),
+body:has(.st-key-digital_page) [data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked),
+body:has(.st-key-sources_page) [data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked),
+[data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked) {
+    background:
+        linear-gradient(135deg, #0F3D91 0%, #2563EB 55%, #38BDF8 100%) !important;
+    border-color: #69B9F1 !important;
+    box-shadow:
+        0 10px 24px rgba(37,99,235,.20),
+        inset 0 1px 0 rgba(255,255,255,.30) !important;
+}
+
+body:has(.st-key-overview_page) [data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked) p,
+body:has(.st-key-overview_page) [data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked) span,
+body:has(.st-key-comparison_page) [data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked) p,
+body:has(.st-key-comparison_page) [data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked) span,
+body:has(.st-key-criterion_page) [data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked) p,
+body:has(.st-key-criterion_page) [data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked) span,
+body:has(.st-key-digital_page) [data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked) p,
+body:has(.st-key-digital_page) [data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked) span,
+body:has(.st-key-sources_page) [data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked) p,
+body:has(.st-key-sources_page) [data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked) span,
+[data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked) p,
+[data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked) span {
+    color: #FFFFFF !important;
+    -webkit-text-fill-color: #FFFFFF !important;
+}
+
+body:has(.st-key-overview_page) [data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked) svg,
+body:has(.st-key-comparison_page) [data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked) svg,
+body:has(.st-key-criterion_page) [data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked) svg,
+body:has(.st-key-digital_page) [data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked) svg,
+body:has(.st-key-sources_page) [data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked) svg,
+[data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked) svg {
+    color: #FFFFFF !important;
+    stroke: #FFFFFF !important;
+}
+
+/* Actual banking-city.png in the header */
+.page-heading .header-art {
+    right: 155px !important;
+    top: 5px !important;
+    width: 265px !important;
+    height: 116px !important;
+}
+
+.report-art-header {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.report-art-header .report-art-image {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+}
+
+/* Sidebar copy stays blue/gray, never rose/pink. */
+.sidebar-brand span,
+.sidebar-model p,
+.sidebar-context p,
+.sidebar-illustration p {
+    color: #607A9F !important;
+    -webkit-text-fill-color: #607A9F !important;
+}
+
+/* Criterion detail: never protrude outside its panel. */
+.st-key-panel_criterion_detail,
+.st-key-panel_criterion_detail > div,
+.criterion-detail-identity,
+.criterion-metadata,
+.criterion-metrics {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+.st-key-panel_criterion_detail {
+    overflow: hidden !important;
+}
+
+.criterion-metric {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+}
+
+/* =========================================================
+   COLORFUL PROFESSIONAL ACCENTS — FINAL OVERRIDE
+   More visual variety without returning to a playful/cute theme
+   ========================================================= */
+
+:root {
+    --accent-blue: #4F8FEA;
+    --accent-cyan: #58C4D8;
+    --accent-mint: #62BFA5;
+    --accent-violet: #8B78D8;
+    --accent-amber: #E9AD53;
+    --accent-coral: #E8848A;
+    --accent-rose: #D97AA8;
+
+    --pastel-blue: #EEF6FF;
+    --pastel-cyan: #EDF9FB;
+    --pastel-mint: #EFF9F5;
+    --pastel-violet: #F4F1FC;
+    --pastel-amber: #FFF7EA;
+    --pastel-coral: #FFF1F1;
+}
+
+/* ---------------------------------------------------------
+   Main background: subtle blue + violet + mint ambient glow
+   --------------------------------------------------------- */
+
+body,
+.stApp,
+[data-testid="stAppViewContainer"] {
+    background:
+        radial-gradient(circle at 90% 5%, rgba(88,196,216,.17), transparent 24%),
+        radial-gradient(circle at 6% 92%, rgba(139,120,216,.11), transparent 28%),
+        radial-gradient(circle at 48% 0%, rgba(98,191,165,.08), transparent 22%),
+        linear-gradient(135deg, #F9FBFF 0%, #F3F7FC 48%, #EEF5FA 100%) !important;
+}
+
+/* ---------------------------------------------------------
+   Header: still report-like, but not only blue
+   --------------------------------------------------------- */
+
+.page-heading {
+    background:
+        radial-gradient(circle at 82% 18%, rgba(88,196,216,.20), transparent 24%),
+        radial-gradient(circle at 95% 100%, rgba(139,120,216,.12), transparent 24%),
+        linear-gradient(115deg, #FFFFFF 0%, #F7FAFF 48%, #EEF8F7 100%) !important;
+}
+
+.page-heading::after {
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #58C4D8,
+            #8B78D8,
+            #62BFA5,
+            transparent
+        ) !important;
+}
+
+/* ---------------------------------------------------------
+   Metric cards: four distinct soft ombre palettes
+   --------------------------------------------------------- */
+
+.metric-tile {
+    overflow: hidden !important;
+    position: relative !important;
+}
+
+.metric-tile::after {
+    content: "";
+    position: absolute;
+    right: -38px;
+    bottom: -48px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    opacity: .34;
+    pointer-events: none;
+    transition:
+        transform .22s ease,
+        opacity .22s ease;
+}
+
+.metric-tile:hover::after {
+    transform: scale(1.10);
+    opacity: .48;
+}
+
+.metric-tile:nth-child(1) {
+    background:
+        linear-gradient(135deg, #FFFFFF 12%, #EDF9F6 100%) !important;
+    border-color: #D6EDE5 !important;
+}
+.metric-tile:nth-child(1)::after {
+    background: radial-gradient(circle, rgba(98,191,165,.34), transparent 68%);
+}
+
+.metric-tile:nth-child(2) {
+    background:
+        linear-gradient(135deg, #FFFFFF 12%, #F3F0FD 100%) !important;
+    border-color: #E3DDF5 !important;
+}
+.metric-tile:nth-child(2)::after {
+    background: radial-gradient(circle, rgba(139,120,216,.31), transparent 68%);
+}
+
+.metric-tile:nth-child(3) {
+    background:
+        linear-gradient(135deg, #FFFFFF 12%, #EDF7FF 100%) !important;
+    border-color: #D8E8F7 !important;
+}
+.metric-tile:nth-child(3)::after {
+    background: radial-gradient(circle, rgba(79,143,234,.30), transparent 68%);
+}
+
+.metric-tile:nth-child(4) {
+    background:
+        linear-gradient(135deg, #FFFFFF 12%, #FFF5EA 100%) !important;
+    border-color: #F2E4CC !important;
+}
+.metric-tile:nth-child(4)::after {
+    background: radial-gradient(circle, rgba(233,173,83,.30), transparent 68%);
+}
+
+.metric-tile:nth-child(1) .object-icon {
+    color: #3DA584 !important;
+    background: linear-gradient(135deg, #E8F7F1, #DDF4EC) !important;
+}
+.metric-tile:nth-child(2) .object-icon {
+    color: #7C69CF !important;
+    background: linear-gradient(135deg, #F1ECFB, #EAE3FA) !important;
+}
+.metric-tile:nth-child(3) .object-icon {
+    color: #3E83DF !important;
+    background: linear-gradient(135deg, #EAF3FF, #DDEEFF) !important;
+}
+.metric-tile:nth-child(4) .object-icon {
+    color: #D49335 !important;
+    background: linear-gradient(135deg, #FFF5E4, #FCEBCB) !important;
+}
+
+/* ---------------------------------------------------------
+   Section icon colors: restore real semantic variation
+   --------------------------------------------------------- */
+
+.object-icon.blue {
+    color: #3F82DE !important;
+    background: linear-gradient(135deg, #EAF3FF, #DDEEFF) !important;
+}
+
+.object-icon.violet {
+    color: #7C69CF !important;
+    background: linear-gradient(135deg, #F2EEFC, #E8E1F9) !important;
+}
+
+.object-icon.teal {
+    color: #3DA584 !important;
+    background: linear-gradient(135deg, #EAF8F3, #DDF3EA) !important;
+}
+
+.object-icon.gold {
+    color: #D49335 !important;
+    background: linear-gradient(135deg, #FFF5E6, #FCE9C8) !important;
+}
+
+/* ---------------------------------------------------------
+   Criterion detail: distinct tones by metric type
+   --------------------------------------------------------- */
+
+.criterion-metric {
+    transition:
+        transform .18s ease,
+        box-shadow .18s ease,
+        border-color .18s ease !important;
+}
+
+.criterion-metric:hover {
+    transform: translateY(-2px) !important;
+    box-shadow:
+        0 13px 28px rgba(46,76,118,.10),
+        0 3px 9px rgba(46,76,118,.04) !important;
+}
+
+.criterion-metric.tone-blue {
+    background:
+        linear-gradient(135deg, #FFFFFF, #EDF6FF) !important;
+    border-color: #D5E7F7 !important;
+}
+
+.criterion-metric.tone-violet {
+    background:
+        linear-gradient(135deg, #FFFFFF, #F3F0FD) !important;
+    border-color: #E1DCF4 !important;
+}
+
+.criterion-metric.tone-teal {
+    background:
+        linear-gradient(135deg, #FFFFFF, #ECF8F4) !important;
+    border-color: #D5ECE5 !important;
+}
+
+.criterion-metric.tone-gold {
+    background:
+        linear-gradient(135deg, #FFFFFF, #FFF6EA) !important;
+    border-color: #F0E1C8 !important;
+}
+
+.criterion-metric.tone-blue .object-icon {
+    color: #3F82DE !important;
+    background: #E7F2FF !important;
+}
+.criterion-metric.tone-violet .object-icon {
+    color: #7C69CF !important;
+    background: #EEE8FB !important;
+}
+.criterion-metric.tone-teal .object-icon {
+    color: #3DA584 !important;
+    background: #E5F6EF !important;
+}
+.criterion-metric.tone-gold .object-icon {
+    color: #D49335 !important;
+    background: #FFF0D7 !important;
+}
+
+/* ---------------------------------------------------------
+   D1-D3: clearly separated visual identities
+   --------------------------------------------------------- */
+
+.st-key-digital_page .digital-card.tone-violet {
+    background:
+        linear-gradient(135deg, #FFFFFF 20%, #F2EEFC 100%) !important;
+    border-color: #DDD6F1 !important;
+}
+
+.st-key-digital_page .digital-card.tone-teal {
+    background:
+        linear-gradient(135deg, #FFFFFF 20%, #EAF8F3 100%) !important;
+    border-color: #D2EBE2 !important;
+}
+
+.st-key-digital_page .digital-card.tone-blue {
+    background:
+        linear-gradient(135deg, #FFFFFF 20%, #FFF5EA 100%) !important;
+    border-color: #F0E0C5 !important;
+}
+
+.st-key-digital_page .digital-card.tone-violet .object-icon {
+    color: #7C69CF !important;
+    background: #EEE8FB !important;
+}
+
+.st-key-digital_page .digital-card.tone-teal .object-icon {
+    color: #3DA584 !important;
+    background: #E4F5EE !important;
+}
+
+.st-key-digital_page .digital-card.tone-blue .object-icon {
+    color: #D49335 !important;
+    background: #FFF0D8 !important;
+}
+
+.st-key-digital_page .digital-card:hover {
+    transform: translateY(-3px) !important;
+    box-shadow:
+        0 15px 32px rgba(60,87,127,.11),
+        0 3px 9px rgba(60,87,127,.04) !important;
+}
+
+/* ---------------------------------------------------------
+   Comparison + analysis: light ombre depth
+   --------------------------------------------------------- */
+
+.bank-mini {
+    background:
+        linear-gradient(
+            145deg,
+            #FFFFFF 0%,
+            color-mix(in srgb, var(--bank) 7%, #FFFFFF) 100%
+        ) !important;
+}
+
+.analysis-row {
+    background:
+        linear-gradient(135deg, #FFFFFF, #F8FAFD) !important;
+}
+
+.analysis-row:hover {
+    background:
+        linear-gradient(135deg, #FFFFFF, #EEF6FF) !important;
+}
+
+.analysis-detail {
+    background:
+        linear-gradient(135deg, #FFFFFF 0%, #F1F6FC 70%, #F4F0FB 100%) !important;
+}
+
+/* ---------------------------------------------------------
+   Ranking leader + selected table rows
+   --------------------------------------------------------- */
+
+.ranking-table tbody tr.ranking-leader {
+    background:
+        linear-gradient(90deg, #EAF8F3 0%, #EEF6FF 62%, #F5F1FC 100%) !important;
+}
+
+.criterion-selected {
+    background:
+        linear-gradient(90deg, #EDF6FF 0%, #F3F0FD 100%) !important;
+}
+
+/* ---------------------------------------------------------
+   Quick insight: blue-violet-mint ombre
+   --------------------------------------------------------- */
+
+.st-key-panel_overview_quick_insight {
+    background:
+        radial-gradient(circle at 95% 25%, rgba(139,120,216,.12), transparent 26%),
+        linear-gradient(115deg, #FFFFFF 0%, #EEF7FF 50%, #EEF9F5 100%) !important;
+}
+
+/* ---------------------------------------------------------
+   Expander hover + inputs
+   --------------------------------------------------------- */
+
+[data-testid="stExpander"] details {
+    transition:
+        border-color .16s ease,
+        box-shadow .16s ease !important;
+}
+
+[data-testid="stExpander"] details:hover {
+    border-color: #C9DCF0 !important;
+    box-shadow: 0 8px 20px rgba(54,84,126,.06) !important;
+}
+
+[data-baseweb="select"] > div:focus-within,
+[data-baseweb="input"] > div:focus-within,
+[data-testid="stTextInput"] input:focus {
+    border-color: #7C69CF !important;
+    box-shadow:
+        0 0 0 3px rgba(124,105,207,.10) !important;
+}
+
+/* ---------------------------------------------------------
+   Soft chart shells with slight multi-tone glow
+   --------------------------------------------------------- */
+
+[data-testid="stPlotlyChart"] {
+    background:
+        radial-gradient(circle at 92% 10%, rgba(139,120,216,.06), transparent 28%),
+        radial-gradient(circle at 8% 90%, rgba(98,191,165,.05), transparent 28%),
+        linear-gradient(180deg, rgba(255,255,255,.99), rgba(249,251,253,.98)) !important;
+}
+
+/* ---------------------------------------------------------
+   Keep interactions subtle and professional
+   --------------------------------------------------------- */
+
+.metric-tile,
+.criterion-metric,
+.digital-card,
+.bank-mini,
+.analysis-row {
+    will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .metric-tile,
+    .criterion-metric,
+    .digital-card,
+    .bank-mini,
+    .analysis-row {
+        transition: none !important;
+        transform: none !important;
+    }
+}
+
+/* =========================================================
+   AMBIENT OMBRE BACKGROUND + SIDEBAR POLISH
+   Make the dashboard less plain white and more premium
+   ========================================================= */
+
+:root {
+    --bg-a: #f7fbff;
+    --bg-b: #eef6ff;
+    --bg-c: #f3f8ff;
+    --bg-d: #edf8f5;
+
+    --side-a: #eef6ff;
+    --side-b: #e8f1ff;
+    --side-c: #f8fbff;
+
+    --glass-blue: rgba(79, 143, 234, 0.10);
+    --glass-violet: rgba(139, 120, 216, 0.10);
+    --glass-mint: rgba(98, 191, 165, 0.10);
+    --glass-gold: rgba(233, 173, 83, 0.08);
+}
+
+/* -----------------------------
+   App background
+   ----------------------------- */
+
+html, body,
+.stApp,
+[data-testid="stAppViewContainer"],
+.main,
+.block-container {
+    background:
+        radial-gradient(circle at 92% 10%, rgba(79,143,234,.13), transparent 21%),
+        radial-gradient(circle at 10% 92%, rgba(139,120,216,.08), transparent 24%),
+        radial-gradient(circle at 50% 0%, rgba(98,191,165,.08), transparent 18%),
+        linear-gradient(135deg, var(--bg-a) 0%, var(--bg-b) 46%, var(--bg-c) 74%, var(--bg-d) 100%) !important;
+}
+
+/* A soft ambient veil behind the main content */
+.main .block-container {
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+.main .block-container::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background:
+        radial-gradient(circle at 82% 16%, rgba(56,189,248,.10), transparent 22%),
+        radial-gradient(circle at 18% 86%, rgba(168,85,247,.06), transparent 22%),
+        radial-gradient(circle at 45% 40%, rgba(16,185,129,.05), transparent 18%);
+}
+
+/* -----------------------------
+   Sidebar polished gradient
+   ----------------------------- */
+
+[data-testid="stSidebar"] {
+    background:
+        radial-gradient(circle at 12% 6%, rgba(96,165,250,.20), transparent 24%),
+        radial-gradient(circle at 88% 94%, rgba(139,120,216,.08), transparent 20%),
+        linear-gradient(180deg, #f8fbff 0%, #eef5ff 54%, #e7f2fb 100%) !important;
+    border-right: 1px solid #d4e4f4 !important;
+    box-shadow:
+        10px 0 28px rgba(35, 77, 135, .07),
+        inset -1px 0 0 rgba(255,255,255,.55) !important;
+}
+
+/* Sidebar content cards */
+.sidebar-model,
+.sidebar-context {
+    background:
+        linear-gradient(145deg, rgba(255,255,255,.96), rgba(239,247,255,.88)) !important;
+    border: 1px solid #d6e6f5 !important;
+    box-shadow:
+        0 10px 22px rgba(39,73,121,.05),
+        0 2px 8px rgba(39,73,121,.03) !important;
+}
+
+/* Sidebar brand */
+.sidebar-brand {
+    background:
+        linear-gradient(145deg, rgba(255,255,255,.70), rgba(240,247,255,.35)) !important;
+    border-radius: 18px !important;
+    padding: 10px 10px 8px !important;
+}
+
+.sidebar-brand h1,
+.sidebar-brand h2,
+.sidebar-brand strong {
+    color: #17305F !important;
+}
+
+.sidebar-brand p,
+.sidebar-model p,
+.sidebar-context p {
+    color: #607a9f !important;
+    -webkit-text-fill-color: #607a9f !important;
+}
+
+/* -----------------------------
+   Nav item hover / active
+   ----------------------------- */
+
+[data-testid="stSidebar"] [role="radiogroup"] label {
+    position: relative !important;
+    overflow: hidden !important;
+    border-radius: 16px !important;
+    transition:
+        transform .18s ease,
+        box-shadow .18s ease,
+        border-color .18s ease,
+        background .18s ease !important;
+}
+
+[data-testid="stSidebar"] [role="radiogroup"] label::after {
+    content: "";
+    position: absolute;
+    inset: auto -26px -26px auto;
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: .18;
+    background: radial-gradient(circle, rgba(255,255,255,.90), transparent 68%);
+    transition: transform .18s ease, opacity .18s ease;
+}
+
+[data-testid="stSidebar"] [role="radiogroup"] label:hover {
+    transform: translateX(2px) !important;
+    background:
+        linear-gradient(135deg, rgba(255,255,255,.92), rgba(228,241,255,.92)) !important;
+    border-color: #cfe0f3 !important;
+    box-shadow: 0 8px 18px rgba(40,82,142,.08) !important;
+}
+
+[data-testid="stSidebar"] [role="radiogroup"] label:hover::after {
+    transform: scale(1.08);
+    opacity: .24;
+}
+
+[data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked) {
+    background:
+        linear-gradient(135deg, #184AA9 0%, #2F73E8 54%, #48B3F6 100%) !important;
+    border: 1px solid #69b9f1 !important;
+    box-shadow:
+        0 14px 30px rgba(37,99,235,.18),
+        inset 0 1px 0 rgba(255,255,255,.25) !important;
+}
+
+[data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked)::before {
+    content: "";
+    position: absolute;
+    inset: 3px;
+    border-radius: 13px;
+    border: 1px solid rgba(255,255,255,.28);
+    pointer-events: none;
+}
+
+[data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked) p,
+[data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked) span {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+[data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked) svg {
+    color: #ffffff !important;
+    stroke: #ffffff !important;
+}
+
+/* -----------------------------
+   Main panels & cards
+   ----------------------------- */
+
+[class*="st-key-panel_"],
+.metric-tile,
+.analysis-row,
+.analysis-detail,
+.digital-card,
+.bank-mini,
+.page-heading {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+[class*="st-key-panel_"] {
+    background:
+        linear-gradient(145deg, rgba(255,255,255,.86), rgba(244,249,255,.92)) !important;
+    border: 1px solid #d6e5f4 !important;
+    box-shadow:
+        0 14px 32px rgba(39,73,121,.06),
+        0 3px 10px rgba(39,73,121,.03) !important;
+}
+
+[class*="st-key-panel_"]:hover {
+    box-shadow:
+        0 18px 36px rgba(39,73,121,.08),
+        0 4px 12px rgba(39,73,121,.04) !important;
+}
+
+/* Header stronger ombre */
+.page-heading {
+    background:
+        radial-gradient(circle at 82% 16%, rgba(96,165,250,.18), transparent 23%),
+        radial-gradient(circle at 60% 0%, rgba(125,211,252,.14), transparent 28%),
+        linear-gradient(115deg, rgba(255,255,255,.92) 0%, rgba(243,249,255,.95) 48%, rgba(232,245,255,.98) 100%) !important;
+    box-shadow:
+        0 18px 38px rgba(31,79,143,.08),
+        0 3px 10px rgba(31,79,143,.03) !important;
+}
+
+/* Metric tiles get richer ombre */
+.metric-tile:nth-child(1) {
+    background:
+        linear-gradient(135deg, rgba(255,255,255,.95) 8%, rgba(232,248,241,.96) 100%) !important;
+}
+.metric-tile:nth-child(2) {
+    background:
+        linear-gradient(135deg, rgba(255,255,255,.95) 8%, rgba(242,238,252,.96) 100%) !important;
+}
+.metric-tile:nth-child(3) {
+    background:
+        linear-gradient(135deg, rgba(255,255,255,.95) 8%, rgba(235,244,255,.96) 100%) !important;
+}
+.metric-tile:nth-child(4) {
+    background:
+        linear-gradient(135deg, rgba(255,255,255,.95) 8%, rgba(255,245,231,.96) 100%) !important;
+}
+
+/* Chart shell not plain white */
+[data-testid="stPlotlyChart"] {
+    border-radius: 16px !important;
+    padding: 4px !important;
+    background:
+        radial-gradient(circle at 92% 10%, rgba(139,120,216,.05), transparent 24%),
+        radial-gradient(circle at 8% 90%, rgba(98,191,165,.05), transparent 24%),
+        linear-gradient(180deg, rgba(255,255,255,.94), rgba(247,251,255,.96)) !important;
+}
+
+/* Tables softer background */
+.ranking-table,
+.matrix-table,
+table {
+    background:
+        linear-gradient(180deg, rgba(255,255,255,.90), rgba(247,251,255,.92)) !important;
+}
+
+/* quick insight box */
+.st-key-panel_overview_quick_insight {
+    background:
+        radial-gradient(circle at 94% 28%, rgba(96,165,250,.10), transparent 24%),
+        linear-gradient(115deg, rgba(255,255,255,.94) 0%, rgba(239,247,255,.95) 56%, rgba(237,249,245,.96) 100%) !important;
+}
+
+/* Scrollbar prettier */
+*::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+    background: rgba(223, 234, 246, .75);
+    border-radius: 999px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #8ab6f7, #5aa3ee);
+    border-radius: 999px;
+    border: 2px solid rgba(223, 234, 246, .75);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #6fa8f0, #3d90e8);
+}
+
+/* Mobile softness */
+@media (max-width: 900px) {
+    [data-testid="stSidebar"] {
+        background:
+            linear-gradient(180deg, #f8fbff 0%, #eef5ff 55%, #ebf4fd 100%) !important;
+    }
+
+    [class*="st-key-panel_"] {
+        box-shadow:
+            0 10px 24px rgba(39,73,121,.05),
+            0 2px 8px rgba(39,73,121,.025) !important;
+    }
+}
+
+/* =========================================================
+   CORPORATE PREMIUM THEME — FINAL OVERRIDE
+   Deep navy + cool glass + restrained gold/teal accents
+   ========================================================= */
+
+:root {
+    --premium-navy: #0B1F3A;
+    --premium-navy-2: #12345A;
+    --premium-blue: #2F6FD6;
+    --premium-cyan: #53B7D7;
+    --premium-teal: #4FA58E;
+    --premium-gold: #D8A64A;
+
+    --premium-ink: #183254;
+    --premium-text: #2F4B70;
+    --premium-muted: #7386A3;
+
+    --premium-bg-1: #F4F7FB;
+    --premium-bg-2: #EDF3F9;
+    --premium-bg-3: #F8FAFD;
+
+    --premium-border: #D6E1ED;
+    --premium-border-2: #C5D5E6;
+
+    --premium-shadow:
+        0 16px 38px rgba(15, 39, 71, .08),
+        0 4px 12px rgba(15, 39, 71, .04);
+
+    --premium-shadow-hover:
+        0 20px 44px rgba(15, 39, 71, .11),
+        0 6px 16px rgba(15, 39, 71, .05);
+}
+
+/* ---------------------------------------------------------
+   Main app canvas
+   --------------------------------------------------------- */
+
+html,
+body,
+.stApp,
+[data-testid="stAppViewContainer"] {
+    background:
+        radial-gradient(circle at 92% 8%, rgba(83,183,215,.10), transparent 22%),
+        radial-gradient(circle at 7% 92%, rgba(47,111,214,.07), transparent 24%),
+        linear-gradient(
+            135deg,
+            var(--premium-bg-3) 0%,
+            var(--premium-bg-1) 48%,
+            var(--premium-bg-2) 100%
+        ) !important;
+    color: var(--premium-text) !important;
+}
+
+[data-testid="stMainBlockContainer"] {
+    max-width: 1680px !important;
+    padding-top: 1rem !important;
+    padding-bottom: 2rem !important;
+}
+
+/* ---------------------------------------------------------
+   Sidebar — premium dark rail
+   --------------------------------------------------------- */
+
+[data-testid="stSidebar"] {
+    background:
+        radial-gradient(circle at 22% 5%, rgba(83,183,215,.14), transparent 24%),
+        linear-gradient(
+            180deg,
+            #0B1F3A 0%,
+            #102A4C 48%,
+            #15375E 100%
+        ) !important;
+    border-right: 1px solid rgba(255,255,255,.08) !important;
+    box-shadow:
+        12px 0 34px rgba(9, 26, 49, .18),
+        inset -1px 0 0 rgba(255,255,255,.035) !important;
+}
+
+[data-testid="stSidebarContent"] {
+    padding: 14px 14px 18px !important;
+}
+
+/* Brand */
+.sidebar-brand {
+    padding: 10px 10px 12px !important;
+    margin-bottom: 8px !important;
+    border-radius: 16px !important;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.055),
+            rgba(255,255,255,.018)
+        ) !important;
+    border: 1px solid rgba(255,255,255,.065) !important;
+}
+
+.sidebar-brand strong,
+.sidebar-brand h1,
+.sidebar-brand h2 {
+    color: #FFFFFF !important;
+    -webkit-text-fill-color: #FFFFFF !important;
+    font-weight: 850 !important;
+    letter-spacing: -.35px !important;
+}
+
+.sidebar-brand span,
+.sidebar-brand p {
+    color: #B8C7DA !important;
+    -webkit-text-fill-color: #B8C7DA !important;
+    opacity: 1 !important;
+}
+
+.brand-mark {
+    color: #FFFFFF !important;
+    background:
+        linear-gradient(135deg, #2F6FD6 0%, #53B7D7 100%) !important;
+    border: 1px solid rgba(255,255,255,.16) !important;
+    box-shadow:
+        0 10px 24px rgba(0,0,0,.18),
+        inset 0 1px 0 rgba(255,255,255,.24) !important;
+}
+
+/* Sidebar nav */
+[data-testid="stSidebar"] [role="radiogroup"] {
+    gap: 7px !important;
+}
+
+[data-testid="stSidebar"] [role="radiogroup"] label {
+    min-height: 46px !important;
+    padding: 10px 12px !important;
+    border-radius: 12px !important;
+    border: 1px solid transparent !important;
+    background: transparent !important;
+    color: #CFDBE8 !important;
+    transition:
+        transform .17s ease,
+        background .17s ease,
+        border-color .17s ease,
+        box-shadow .17s ease !important;
+}
+
+[data-testid="stSidebar"] [role="radiogroup"] label p,
+[data-testid="stSidebar"] [role="radiogroup"] label span {
+    color: #CFDBE8 !important;
+    -webkit-text-fill-color: #CFDBE8 !important;
+    opacity: 1 !important;
+    font-weight: 620 !important;
+}
+
+[data-testid="stSidebar"] [role="radiogroup"] label svg {
+    color: #9FB5CF !important;
+    stroke: #9FB5CF !important;
+}
+
+[data-testid="stSidebar"] [role="radiogroup"] label:hover {
+    transform: translateX(2px);
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.07),
+            rgba(83,183,215,.08)
+        ) !important;
+    border-color: rgba(255,255,255,.08) !important;
+}
+
+[data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked) {
+    position: relative !important;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(47,111,214,.96) 0%,
+            rgba(43,126,192,.96) 60%,
+            rgba(83,183,215,.96) 100%
+        ) !important;
+    border-color: rgba(255,255,255,.16) !important;
+    box-shadow:
+        0 12px 26px rgba(0,0,0,.18),
+        inset 0 1px 0 rgba(255,255,255,.23) !important;
+}
+
+[data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked)::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 9px;
+    bottom: 9px;
+    width: 3px;
+    border-radius: 999px;
+    background: linear-gradient(180deg, #F3D38B, #D8A64A);
+    box-shadow: 0 0 12px rgba(216,166,74,.35);
+}
+
+[data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked) p,
+[data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked) span {
+    color: #FFFFFF !important;
+    -webkit-text-fill-color: #FFFFFF !important;
+    font-weight: 760 !important;
+}
+
+[data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked) svg {
+    color: #FFFFFF !important;
+    stroke: #FFFFFF !important;
+}
+
+/* Sidebar info cards */
+.sidebar-model,
+.sidebar-context {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.055),
+            rgba(255,255,255,.025)
+        ) !important;
+    border: 1px solid rgba(255,255,255,.07) !important;
+    border-radius: 14px !important;
+    box-shadow: none !important;
+}
+
+.sidebar-model strong,
+.sidebar-context strong {
+    color: #FFFFFF !important;
+    -webkit-text-fill-color: #FFFFFF !important;
+}
+
+.sidebar-model p,
+.sidebar-context p {
+    color: #B5C4D8 !important;
+    -webkit-text-fill-color: #B5C4D8 !important;
+    opacity: 1 !important;
+}
+
+.sidebar-model .object-icon {
+    color: #84C8E3 !important;
+    background: rgba(83,183,215,.14) !important;
+}
+
+/* ---------------------------------------------------------
+   Header
+   --------------------------------------------------------- */
+
+.page-heading {
+    position: relative !important;
+    overflow: hidden !important;
+    border: 1px solid var(--premium-border) !important;
+    border-radius: 18px !important;
+    background:
+        radial-gradient(circle at 82% 14%, rgba(83,183,215,.14), transparent 23%),
+        radial-gradient(circle at 95% 100%, rgba(216,166,74,.08), transparent 22%),
+        linear-gradient(
+            115deg,
+            rgba(255,255,255,.97) 0%,
+            rgba(246,249,253,.98) 50%,
+            rgba(235,243,250,.98) 100%
+        ) !important;
+    box-shadow: var(--premium-shadow) !important;
+}
+
+.page-heading::after {
+    content: "";
+    position: absolute;
+    right: 12%;
+    bottom: 12px;
+    width: 180px;
+    height: 2px;
+    border-radius: 999px;
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #53B7D7 28%,
+            #2F6FD6 58%,
+            #D8A64A 82%,
+            transparent
+        );
+    opacity: .72;
+}
+
+.page-context {
+    color: #2F6FD6 !important;
+    -webkit-text-fill-color: #2F6FD6 !important;
+    font-weight: 760 !important;
+}
+
+.page-heading h1 {
+    color: var(--premium-navy) !important;
+    -webkit-text-fill-color: var(--premium-navy) !important;
+    font-weight: 870 !important;
+    letter-spacing: -.65px !important;
+}
+
+.page-heading p {
+    color: #5E7698 !important;
+    -webkit-text-fill-color: #5E7698 !important;
+}
+
+.page-heading .year-card {
+    background:
+        linear-gradient(145deg, #FFFFFF, #F5F8FC) !important;
+    border: 1px solid var(--premium-border) !important;
+    box-shadow: 0 8px 20px rgba(15,39,71,.06) !important;
+}
+
+.page-heading .year-card strong {
+    color: var(--premium-navy) !important;
+}
+
+/* ---------------------------------------------------------
+   Panels / glass cards
+   --------------------------------------------------------- */
+
+[class*="st-key-panel_"] {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.90),
+            rgba(245,249,253,.94)
+        ) !important;
+    border: 1px solid var(--premium-border) !important;
+    border-radius: 16px !important;
+    box-shadow: var(--premium-shadow) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition:
+        transform .18s ease,
+        box-shadow .18s ease,
+        border-color .18s ease !important;
+}
+
+[class*="st-key-panel_"]:hover {
+    transform: translateY(-1px);
+    border-color: var(--premium-border-2) !important;
+    box-shadow: var(--premium-shadow-hover) !important;
+}
+
+.section-heading h2 {
+    color: var(--premium-navy) !important;
+    -webkit-text-fill-color: var(--premium-navy) !important;
+    font-weight: 820 !important;
+}
+
+.section-heading p {
+    color: var(--premium-muted) !important;
+    -webkit-text-fill-color: var(--premium-muted) !important;
+}
+
+/* ---------------------------------------------------------
+   Metric cards — restrained color coding
+   --------------------------------------------------------- */
+
+.metric-tile {
+    min-height: 96px !important;
+    position: relative !important;
+    overflow: hidden !important;
+    border: 1px solid var(--premium-border) !important;
+    border-radius: 15px !important;
+    box-shadow:
+        0 9px 22px rgba(15,39,71,.055),
+        inset 0 1px 0 rgba(255,255,255,.80) !important;
+    transition:
+        transform .18s ease,
+        box-shadow .18s ease !important;
+}
+
+.metric-tile::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(
+            110deg,
+            rgba(255,255,255,.32),
+            transparent 40%
+        );
+}
+
+.metric-tile:hover {
+    transform: translateY(-2px) !important;
+    box-shadow:
+        0 16px 30px rgba(15,39,71,.09),
+        inset 0 1px 0 rgba(255,255,255,.82) !important;
+}
+
+.metric-tile:nth-child(1) {
+    background:
+        linear-gradient(135deg, #FFFFFF 12%, #EDF8F5 100%) !important;
+    border-top: 3px solid #4FA58E !important;
+}
+.metric-tile:nth-child(2) {
+    background:
+        linear-gradient(135deg, #FFFFFF 12%, #F2F0FA 100%) !important;
+    border-top: 3px solid #8B78D8 !important;
+}
+.metric-tile:nth-child(3) {
+    background:
+        linear-gradient(135deg, #FFFFFF 12%, #EDF4FD 100%) !important;
+    border-top: 3px solid #2F6FD6 !important;
+}
+.metric-tile:nth-child(4) {
+    background:
+        linear-gradient(135deg, #FFFFFF 12%, #FFF7EB 100%) !important;
+    border-top: 3px solid #D8A64A !important;
+}
+
+.metric-value {
+    color: var(--premium-navy) !important;
+    -webkit-text-fill-color: var(--premium-navy) !important;
+    font-weight: 860 !important;
+}
+
+.metric-label {
+    color: #355273 !important;
+    -webkit-text-fill-color: #355273 !important;
+}
+
+.metric-note {
+    color: #7B8EA8 !important;
+    -webkit-text-fill-color: #7B8EA8 !important;
+}
+
+/* ---------------------------------------------------------
+   Icon palette
+   --------------------------------------------------------- */
+
+.object-icon {
+    border-radius: 12px !important;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.75) !important;
+}
+
+.object-icon.blue {
+    color: #2F6FD6 !important;
+    background: linear-gradient(135deg, #EAF2FD, #DCEBFA) !important;
+}
+
+.object-icon.violet {
+    color: #7E6AC8 !important;
+    background: linear-gradient(135deg, #F2EEFA, #E9E3F8) !important;
+}
+
+.object-icon.teal {
+    color: #438F7B !important;
+    background: linear-gradient(135deg, #EAF6F2, #DDEFE9) !important;
+}
+
+.object-icon.gold {
+    color: #C58F33 !important;
+    background: linear-gradient(135deg, #FFF5E5, #F9E8C8) !important;
+}
+
+/* ---------------------------------------------------------
+   Tables
+   --------------------------------------------------------- */
+
+.ranking-wrap,
+.criterion-table-wrap,
+.comparison-matrix-wrap {
+    overflow: hidden !important;
+    border: 1px solid var(--premium-border) !important;
+    border-radius: 12px !important;
+    background: rgba(255,255,255,.92) !important;
+}
+
+.ranking-table th,
+.criterion-table th,
+.comparison-matrix thead th {
+    color: #274667 !important;
+    background:
+        linear-gradient(90deg, #EAF1F8, #F3F6FA) !important;
+    border-color: #D8E3EE !important;
+    font-weight: 760 !important;
+}
+
+.ranking-table td,
+.criterion-table td,
+.comparison-matrix td,
+.comparison-matrix tbody th {
+    color: #2D4B70 !important;
+    border-color: #E1E9F1 !important;
+}
+
+.ranking-table tbody tr:nth-child(even),
+.criterion-table tbody tr:nth-child(even) {
+    background: #F8FAFC !important;
+}
+
+.ranking-table tbody tr:hover,
+.criterion-table tbody tr:hover {
+    background: #F1F6FB !important;
+}
+
+.ranking-table tbody tr.ranking-leader {
+    background:
+        linear-gradient(90deg, #EDF8F4, #F5FAFD) !important;
+}
+
+/* ---------------------------------------------------------
+   Criterion detail / digital cards
+   --------------------------------------------------------- */
+
+.criterion-metric,
+.digital-card {
+    border: 1px solid var(--premium-border) !important;
+    border-radius: 13px !important;
+    box-shadow: 0 8px 18px rgba(15,39,71,.05) !important;
+}
+
+.criterion-metric.tone-blue {
+    background: linear-gradient(135deg, #FFFFFF, #EEF5FD) !important;
+}
+.criterion-metric.tone-violet {
+    background: linear-gradient(135deg, #FFFFFF, #F3F0FA) !important;
+}
+.criterion-metric.tone-teal {
+    background: linear-gradient(135deg, #FFFFFF, #EDF7F4) !important;
+}
+.criterion-metric.tone-gold {
+    background: linear-gradient(135deg, #FFFFFF, #FFF7EB) !important;
+}
+
+.digital-card.tone-violet {
+    background: linear-gradient(135deg, #FFFFFF, #F3F0FA) !important;
+}
+.digital-card.tone-teal {
+    background: linear-gradient(135deg, #FFFFFF, #EDF7F4) !important;
+}
+.digital-card.tone-blue {
+    background: linear-gradient(135deg, #FFFFFF, #EEF5FD) !important;
+}
+
+/* ---------------------------------------------------------
+   Analysis / comparison
+   --------------------------------------------------------- */
+
+.analysis-row,
+.analysis-detail,
+.bank-mini {
+    border: 1px solid var(--premium-border) !important;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.94),
+            rgba(247,250,253,.96)
+        ) !important;
+    box-shadow: 0 6px 16px rgba(15,39,71,.04) !important;
+}
+
+.analysis-row:hover,
+.bank-mini:hover {
+    background:
+        linear-gradient(145deg, #FFFFFF, #F1F6FB) !important;
+}
+
+/* ---------------------------------------------------------
+   Inputs / controls
+   --------------------------------------------------------- */
+
+[data-baseweb="select"] > div,
+[data-baseweb="input"] > div,
+[data-baseweb="textarea"] > div,
+[data-testid="stTextInput"] input,
+[data-testid="stNumberInput"] input,
+[data-testid="stDateInput"] input,
+[data-testid="stTimeInput"] input,
+textarea {
+    color: var(--premium-ink) !important;
+    background: #FFFFFF !important;
+    border: 1px solid #CBD8E5 !important;
+    border-radius: 10px !important;
+}
+
+[data-baseweb="select"] > div:focus-within,
+[data-baseweb="input"] > div:focus-within,
+[data-testid="stTextInput"] input:focus {
+    border-color: #2F6FD6 !important;
+    box-shadow: 0 0 0 3px rgba(47,111,214,.10) !important;
+}
+
+/* ---------------------------------------------------------
+   Plotly shells
+   --------------------------------------------------------- */
+
+[data-testid="stPlotlyChart"] {
+    border-radius: 14px !important;
+    background:
+        radial-gradient(circle at 92% 8%, rgba(83,183,215,.045), transparent 24%),
+        linear-gradient(180deg, rgba(255,255,255,.97), rgba(248,250,253,.98)) !important;
+}
+
+/* ---------------------------------------------------------
+   Expanders
+   --------------------------------------------------------- */
+
+[data-testid="stExpander"] details {
+    border: 1px solid var(--premium-border) !important;
+    border-radius: 11px !important;
+    background: #FFFFFF !important;
+}
+
+[data-testid="stExpander"] summary {
+    background:
+        linear-gradient(90deg, #F6F9FC, #EEF3F8) !important;
+    color: var(--premium-navy) !important;
+}
+
+[data-testid="stExpander"] summary p,
+[data-testid="stExpander"] summary span {
+    color: var(--premium-navy) !important;
+    -webkit-text-fill-color: var(--premium-navy) !important;
+}
+
+/* ---------------------------------------------------------
+   Scrollbar
+   --------------------------------------------------------- */
+
+*::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+    background: rgba(212,224,237,.58);
+    border-radius: 999px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background:
+        linear-gradient(180deg, #607B9F, #3D5B80) !important;
+    border-radius: 999px;
+    border: 2px solid rgba(212,224,237,.58);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background:
+        linear-gradient(180deg, #4D6D93, #2F4F75) !important;
+}
+
+/* ---------------------------------------------------------
+   Responsive
+   --------------------------------------------------------- */
+
+@media (max-width: 900px) {
+    [data-testid="stSidebar"] {
+        background:
+            linear-gradient(180deg, #0B1F3A 0%, #133457 100%) !important;
+    }
+
+    [class*="st-key-panel_"] {
+        box-shadow:
+            0 10px 24px rgba(15,39,71,.06),
+            0 2px 8px rgba(15,39,71,.03) !important;
+    }
+}
+
+/* =========================================================
+   PREMIUM MOCKUP MATCH — FINAL OVERRIDE
+   Navy rail · glass cards · gold accents · skyline decoration
+   ========================================================= */
+
+:root {
+    --pm-navy-950: #07182d;
+    --pm-navy-900: #0b2240;
+    --pm-navy-850: #102d50;
+    --pm-blue: #2f76e8;
+    --pm-cyan: #4cbcf3;
+    --pm-teal: #4fb99f;
+    --pm-violet: #8d73df;
+    --pm-gold: #e4aa3d;
+
+    --pm-ink: #10274b;
+    --pm-text: #385476;
+    --pm-muted: #788ba7;
+
+    --pm-border: #d5e1ee;
+    --pm-card: rgba(255,255,255,.92);
+}
+
+/* ---------------------------------------------------------
+   Canvas: soft premium blue-white ambience
+   --------------------------------------------------------- */
+
+html,
+body,
+.stApp,
+[data-testid="stAppViewContainer"] {
+    background:
+        radial-gradient(circle at 93% 7%, rgba(76,188,243,.12), transparent 20%),
+        radial-gradient(circle at 49% 98%, rgba(141,115,223,.07), transparent 26%),
+        linear-gradient(
+            135deg,
+            #f8fbff 0%,
+            #f1f6fc 46%,
+            #eaf2f8 100%
+        ) !important;
+}
+
+[data-testid="stMainBlockContainer"] {
+    max-width: 1680px !important;
+    padding: .85rem 1.05rem 2rem !important;
+}
+
+/* ---------------------------------------------------------
+   Sidebar: richer navy + gold curves + skyline
+   --------------------------------------------------------- */
+
+[data-testid="stSidebar"] {
+    position: relative !important;
+    overflow: hidden !important;
+    background:
+        radial-gradient(circle at 20% 5%, rgba(76,188,243,.18), transparent 20%),
+        linear-gradient(
+            180deg,
+            var(--pm-navy-950) 0%,
+            var(--pm-navy-900) 48%,
+            #0c294c 100%
+        ) !important;
+    border-right: 1px solid rgba(255,255,255,.075) !important;
+    box-shadow:
+        14px 0 34px rgba(4,20,40,.20),
+        inset -1px 0 0 rgba(255,255,255,.035) !important;
+}
+
+/* subtle technical grid */
+[data-testid="stSidebar"]::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: .26;
+    background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+    background-size: 26px 26px;
+    mask-image: linear-gradient(to bottom, black 0%, transparent 58%);
+}
+
+/* decorative premium gold/blue waves */
+[data-testid="stSidebar"]::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    left: -22%;
+    right: -18%;
+    bottom: 12px;
+    height: 245px;
+    opacity: .72;
+    background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 250'%3E%3Cpath d='M-20 165 C55 95 116 226 185 159 S266 92 345 132' fill='none' stroke='%23E4AA3D' stroke-width='1.6' opacity='.72'/%3E%3Cpath d='M-18 185 C58 122 120 238 197 175 S276 112 344 151' fill='none' stroke='%234CBCF3' stroke-width='1.35' opacity='.52'/%3E%3Cpath d='M-25 199 C52 145 117 244 198 192 S274 138 350 170' fill='none' stroke='%23FFFFFF' stroke-width='.8' opacity='.18'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    z-index: 0;
+}
+
+[data-testid="stSidebarContent"] {
+    position: relative !important;
+    z-index: 2 !important;
+    padding: 12px 13px 20px !important;
+}
+
+/* ---------------------------------------------------------
+   Brand
+   --------------------------------------------------------- */
+
+.sidebar-brand {
+    padding: 8px 8px 10px !important;
+    margin-bottom: 8px !important;
+    border: 0 !important;
+    background: transparent !important;
+}
+
+.brand-mark {
+    border-radius: 13px !important;
+    background:
+        linear-gradient(135deg, #2167e2 0%, #32a8f3 100%) !important;
+    border: 1px solid rgba(255,255,255,.20) !important;
+    box-shadow:
+        0 10px 22px rgba(0,0,0,.20),
+        inset 0 1px 0 rgba(255,255,255,.25) !important;
+}
+
+.sidebar-brand strong {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+    font-weight: 850 !important;
+}
+
+.sidebar-brand span {
+    color: #b8c9dc !important;
+    -webkit-text-fill-color: #b8c9dc !important;
+    line-height: 1.35 !important;
+}
+
+/* ---------------------------------------------------------
+   Navigation
+   --------------------------------------------------------- */
+
+[data-testid="stSidebar"] [role="radiogroup"] {
+    gap: 8px !important;
+}
+
+[data-testid="stSidebar"] [role="radiogroup"] label {
+    min-height: 46px !important;
+    padding: 10px 11px !important;
+    border-radius: 13px !important;
+    border: 1px solid transparent !important;
+    color: #d2deea !important;
+    background: transparent !important;
+    transition:
+        transform .17s ease,
+        background .17s ease,
+        border-color .17s ease,
+        box-shadow .17s ease !important;
+}
+
+[data-testid="stSidebar"] [role="radiogroup"] label p,
+[data-testid="stSidebar"] [role="radiogroup"] label span {
+    color: #d2deea !important;
+    -webkit-text-fill-color: #d2deea !important;
+    font-weight: 610 !important;
+}
+
+[data-testid="stSidebar"] [role="radiogroup"] label svg {
+    color: #9fb5cf !important;
+    stroke: #9fb5cf !important;
+}
+
+[data-testid="stSidebar"] [role="radiogroup"] label:hover {
+    transform: translateX(2px);
+    background:
+        linear-gradient(90deg, rgba(255,255,255,.06), rgba(76,188,243,.08)) !important;
+    border-color: rgba(255,255,255,.07) !important;
+}
+
+[data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked) {
+    background:
+        linear-gradient(
+            135deg,
+            #1452bc 0%,
+            #237be9 55%,
+            #3eb9f1 100%
+        ) !important;
+    border: 1px solid rgba(255,255,255,.16) !important;
+    box-shadow:
+        0 12px 26px rgba(0,0,0,.20),
+        0 0 18px rgba(62,185,241,.18),
+        inset 0 1px 0 rgba(255,255,255,.25) !important;
+}
+
+[data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked)::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 8px;
+    bottom: 8px;
+    width: 4px;
+    border-radius: 0 999px 999px 0;
+    background: linear-gradient(180deg, #f4d887, #dba13c);
+    box-shadow: 0 0 14px rgba(228,170,61,.58);
+}
+
+[data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked) p,
+[data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked) span,
+[data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked) svg {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+    stroke: #fff !important;
+}
+
+/* ---------------------------------------------------------
+   Sidebar information cards
+   --------------------------------------------------------- */
+
+.sidebar-model,
+.sidebar-context {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.06),
+            rgba(255,255,255,.025)
+        ) !important;
+    border: 1px solid rgba(255,255,255,.08) !important;
+    border-radius: 14px !important;
+    box-shadow:
+        0 9px 20px rgba(0,0,0,.10),
+        inset 0 1px 0 rgba(255,255,255,.03) !important;
+}
+
+.sidebar-model strong,
+.sidebar-context strong {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+.sidebar-model p,
+.sidebar-context p {
+    color: #b5c6d9 !important;
+    -webkit-text-fill-color: #b5c6d9 !important;
+}
+
+.sidebar-model .object-icon {
+    color: #54bdf1 !important;
+    background:
+        linear-gradient(135deg, rgba(47,118,232,.22), rgba(76,188,243,.10)) !important;
+}
+
+/* Hide the bright banking asset in the sidebar and create a skyline instead. */
+.sidebar-illustration .report-art-sidebar {
+    display: none !important;
+}
+
+.sidebar-illustration {
+    position: relative !important;
+    min-height: 185px !important;
+    margin-top: 14px !important;
+    overflow: hidden !important;
+}
+
+.sidebar-illustration::before {
+    content: "";
+    position: absolute;
+    left: -6px;
+    right: -6px;
+    bottom: 4px;
+    height: 128px;
+    opacity: .88;
+    background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 280 130'%3E%3Cg fill='%23153156'%3E%3Crect x='0' y='77' width='22' height='53'/%3E%3Crect x='25' y='58' width='25' height='72'/%3E%3Crect x='54' y='85' width='18' height='45'/%3E%3Crect x='76' y='42' width='34' height='88'/%3E%3Crect x='114' y='68' width='23' height='62'/%3E%3Crect x='141' y='31' width='28' height='99'/%3E%3Crect x='173' y='52' width='38' height='78'/%3E%3Crect x='215' y='72' width='19' height='58'/%3E%3Crect x='238' y='48' width='33' height='82'/%3E%3C/g%3E%3Cg fill='%23E4AA3D' opacity='.45'%3E%3Crect x='32' y='69' width='4' height='4'/%3E%3Crect x='86' y='55' width='4' height='4'/%3E%3Crect x='151' y='42' width='4' height='4'/%3E%3Crect x='188' y='65' width='4' height='4'/%3E%3Crect x='249' y='59' width='4' height='4'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: cover;
+    pointer-events: none;
+}
+
+.sidebar-illustration p {
+    position: absolute;
+    left: 8px;
+    bottom: 126px;
+    z-index: 2;
+    color: #b9c9da !important;
+    -webkit-text-fill-color: #b9c9da !important;
+    font-size: 10px !important;
+    line-height: 1.45 !important;
+}
+
+/* ---------------------------------------------------------
+   Hero / header
+   --------------------------------------------------------- */
+
+.page-heading {
+    position: relative !important;
+    overflow: hidden !important;
+    min-height: 126px !important;
+    border: 1px solid #cfddea !important;
+    border-radius: 18px !important;
+    background:
+        radial-gradient(circle at 81% 20%, rgba(76,188,243,.16), transparent 23%),
+        linear-gradient(
+            115deg,
+            rgba(255,255,255,.97) 0%,
+            rgba(245,249,253,.98) 49%,
+            rgba(230,243,252,.99) 100%
+        ) !important;
+    box-shadow:
+        0 18px 40px rgba(20,48,82,.09),
+        0 3px 10px rgba(20,48,82,.035) !important;
+}
+
+/* premium sweeping bands */
+.page-heading::before {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    right: 6%;
+    top: -64px;
+    width: 520px;
+    height: 230px;
+    opacity: .72;
+    background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 520 230'%3E%3Cpath d='M-10 174 C105 65 238 203 374 83 C424 39 475 39 535 64' fill='none' stroke='%23ffffff' stroke-width='3' opacity='.58'/%3E%3Cpath d='M-15 190 C109 85 252 215 392 101 C442 61 486 55 535 76' fill='none' stroke='%23E4AA3D' stroke-width='1.5' opacity='.48'/%3E%3Cpath d='M-5 154 C100 56 225 177 352 70 C421 12 477 26 536 48' fill='none' stroke='%234CBCF3' stroke-width='2' opacity='.36'/%3E%3C/svg%3E");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.page-heading .header-art {
+    right: 150px !important;
+    top: 1px !important;
+    width: 280px !important;
+    height: 122px !important;
+    filter: drop-shadow(0 12px 18px rgba(25,75,121,.14));
+}
+
+.page-heading .year-card {
+    border-radius: 13px !important;
+    background:
+        linear-gradient(145deg, rgba(255,255,255,.98), rgba(240,247,253,.96)) !important;
+    border: 1px solid #d4e1ed !important;
+    box-shadow: 0 8px 20px rgba(15,39,71,.065) !important;
+}
+
+/* ---------------------------------------------------------
+   KPI row: mockup-like top accents
+   --------------------------------------------------------- */
+
+.metric-tile {
+    position: relative !important;
+    overflow: hidden !important;
+    min-height: 96px !important;
+    border-radius: 15px !important;
+    box-shadow:
+        0 10px 24px rgba(15,39,71,.055),
+        inset 0 1px 0 rgba(255,255,255,.84) !important;
+}
+
+.metric-tile::after {
+    content: "";
+    position: absolute;
+    right: 17px;
+    bottom: 19px;
+    width: 34px;
+    height: 36px;
+    opacity: .58;
+    border-radius: 2px;
+    background:
+        linear-gradient(to top, currentColor 0 100%) 0 100% / 5px 14px no-repeat,
+        linear-gradient(to top, currentColor 0 100%) 10px 100% / 5px 22px no-repeat,
+        linear-gradient(to top, currentColor 0 100%) 20px 100% / 5px 30px no-repeat,
+        linear-gradient(to top, currentColor 0 100%) 30px 100% / 5px 36px no-repeat;
+    pointer-events: none;
+}
+
+.metric-tile:nth-child(1) {
+    color: var(--pm-teal) !important;
+    background: linear-gradient(135deg, #fff 12%, #edf8f5 100%) !important;
+}
+.metric-tile:nth-child(2) {
+    color: var(--pm-violet) !important;
+    background: linear-gradient(135deg, #fff 12%, #f3effc 100%) !important;
+}
+.metric-tile:nth-child(3) {
+    color: var(--pm-blue) !important;
+    background: linear-gradient(135deg, #fff 12%, #edf4ff 100%) !important;
+}
+.metric-tile:nth-child(4) {
+    color: var(--pm-gold) !important;
+    background: linear-gradient(135deg, #fff 12%, #fff6e8 100%) !important;
+}
+
+.metric-tile > div:not(.object-icon) {
+    position: relative;
+    z-index: 2;
+    padding-right: 42px;
+}
+
+/* ---------------------------------------------------------
+   Main cards
+   --------------------------------------------------------- */
+
+[class*="st-key-panel_"] {
+    border-radius: 16px !important;
+    background:
+        linear-gradient(145deg, rgba(255,255,255,.93), rgba(246,249,253,.95)) !important;
+    border: 1px solid #d5e1ed !important;
+    box-shadow:
+        0 16px 36px rgba(15,39,71,.065),
+        0 3px 10px rgba(15,39,71,.03) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+/* ---------------------------------------------------------
+   Quick insight: premium implication sub-card
+   --------------------------------------------------------- */
+
+.st-key-panel_overview_quick_insight {
+    background:
+        linear-gradient(
+            115deg,
+            rgba(255,255,255,.96) 0%,
+            rgba(245,249,253,.97) 62%,
+            rgba(238,245,250,.98) 100%
+        ) !important;
+}
+
+.premium-insight-copy p {
+    margin: 2px 0 8px !important;
+    color: #365272 !important;
+    font-size: 12px !important;
+    line-height: 1.62 !important;
+}
+
+.premium-insight-copy strong,
+.premium-insight-copy b {
+    color: #142d51 !important;
+}
+
+.premium-implication {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    margin-top: 10px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid #ecdcb9;
+    background:
+        linear-gradient(135deg, rgba(255,250,241,.98), rgba(249,243,231,.95));
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.72);
+}
+
+.premium-implication .object-icon {
+    flex: 0 0 auto;
+    margin-top: 1px;
+}
+
+.premium-implication strong {
+    display: block;
+    margin-bottom: 2px;
+    color: #7c5520 !important;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.premium-implication p {
+    margin: 0;
+    color: #657895 !important;
+    font-size: 10.5px;
+    line-height: 1.55;
+}
+
+.premium-implication b {
+    color: #324b6d !important;
+}
+
+/* ---------------------------------------------------------
+   Overview leader profile card
+   --------------------------------------------------------- */
+
+.st-key-panel_overview_groups {
+    background:
+        radial-gradient(circle at 91% 12%, rgba(76,188,243,.055), transparent 24%),
+        linear-gradient(145deg, rgba(255,255,255,.95), rgba(245,249,253,.97)) !important;
+}
+
+/* ---------------------------------------------------------
+   Tables and charts
+   --------------------------------------------------------- */
+
+.ranking-wrap,
+.criterion-table-wrap,
+.comparison-matrix-wrap {
+    border-radius: 11px !important;
+    border: 1px solid #d4e0ec !important;
+}
+
+.ranking-table th,
+.criterion-table th,
+.comparison-matrix thead th {
+    background:
+        linear-gradient(90deg, #eaf1f8, #f5f7fa) !important;
+    color: #294765 !important;
+}
+
+.ranking-table tbody tr.ranking-leader {
+    background:
+        linear-gradient(90deg, #ecf7f3, #f7fafc) !important;
+}
+
+[data-testid="stPlotlyChart"] {
+    border-radius: 14px !important;
+    background:
+        radial-gradient(circle at 95% 8%, rgba(141,115,223,.035), transparent 23%),
+        linear-gradient(180deg, rgba(255,255,255,.98), rgba(248,250,253,.98)) !important;
+}
+
+/* ---------------------------------------------------------
+   Responsive
+   --------------------------------------------------------- */
+
+@media (max-width: 1100px) {
+    .page-heading .header-art {
+        width: 225px !important;
+        right: 140px !important;
+    }
+
+    .metric-tile::after {
+        opacity: .35;
+        transform: scale(.86);
+        transform-origin: bottom right;
+    }
+}
+
+@media (max-width: 900px) {
+    [data-testid="stSidebar"] {
+        background:
+            linear-gradient(180deg, #07182d 0%, #0d2a4b 100%) !important;
+    }
+
+    .sidebar-illustration {
+        display: none !important;
+    }
+}
+
+/* =========================================================
+   FORCE DARK PREMIUM SIDEBAR — FINAL FIX
+   Fix conflict where old light-sidebar selectors override
+   the corporate premium dark rail.
+   ========================================================= */
+
+/* Force the sidebar shell itself */
+html body [data-testid="stSidebar"],
+html body:has(.st-key-overview_page) [data-testid="stSidebar"],
+html body:has(.st-key-comparison_page) [data-testid="stSidebar"],
+html body:has(.st-key-criterion_page) [data-testid="stSidebar"],
+html body:has(.st-key-digital_page) [data-testid="stSidebar"],
+html body:has(.st-key-sources_page) [data-testid="stSidebar"] {
+    background:
+        radial-gradient(circle at 18% 4%, rgba(76,188,243,.18), transparent 22%),
+        radial-gradient(circle at 92% 94%, rgba(228,170,61,.08), transparent 20%),
+        linear-gradient(
+            180deg,
+            #07182D 0%,
+            #0B2341 46%,
+            #102F55 100%
+        ) !important;
+
+    border-right: 1px solid rgba(255,255,255,.07) !important;
+    box-shadow:
+        14px 0 34px rgba(4,20,40,.20),
+        inset -1px 0 0 rgba(255,255,255,.035) !important;
+}
+
+/* Streamlit's inner sidebar containers can inherit old light backgrounds */
+html body [data-testid="stSidebar"] > div,
+html body [data-testid="stSidebar"] [data-testid="stSidebarContent"],
+html body:has(.st-key-overview_page) [data-testid="stSidebar"] > div,
+html body:has(.st-key-comparison_page) [data-testid="stSidebar"] > div,
+html body:has(.st-key-criterion_page) [data-testid="stSidebar"] > div,
+html body:has(.st-key-digital_page) [data-testid="stSidebar"] > div,
+html body:has(.st-key-sources_page) [data-testid="stSidebar"] > div {
+    background: transparent !important;
+}
+
+/* Brand */
+html body [data-testid="stSidebar"] .sidebar-brand,
+html body:has(.st-key-overview_page) [data-testid="stSidebar"] .sidebar-brand,
+html body:has(.st-key-comparison_page) [data-testid="stSidebar"] .sidebar-brand,
+html body:has(.st-key-criterion_page) [data-testid="stSidebar"] .sidebar-brand,
+html body:has(.st-key-digital_page) [data-testid="stSidebar"] .sidebar-brand,
+html body:has(.st-key-sources_page) [data-testid="stSidebar"] .sidebar-brand {
+    background: transparent !important;
+    border: 0 !important;
+}
+
+html body [data-testid="stSidebar"] .sidebar-brand strong,
+html body [data-testid="stSidebar"] .sidebar-brand h1,
+html body [data-testid="stSidebar"] .sidebar-brand h2 {
+    color: #FFFFFF !important;
+    -webkit-text-fill-color: #FFFFFF !important;
+    opacity: 1 !important;
+}
+
+html body [data-testid="stSidebar"] .sidebar-brand span,
+html body [data-testid="stSidebar"] .sidebar-brand p {
+    color: #B7C8DB !important;
+    -webkit-text-fill-color: #B7C8DB !important;
+    opacity: 1 !important;
+}
+
+/* Inactive nav items */
+html body [data-testid="stSidebar"] [role="radiogroup"] label:not(:has(input:checked)),
+html body:has(.st-key-overview_page) [data-testid="stSidebar"] [role="radiogroup"] label:not(:has(input:checked)),
+html body:has(.st-key-comparison_page) [data-testid="stSidebar"] [role="radiogroup"] label:not(:has(input:checked)),
+html body:has(.st-key-criterion_page) [data-testid="stSidebar"] [role="radiogroup"] label:not(:has(input:checked)),
+html body:has(.st-key-digital_page) [data-testid="stSidebar"] [role="radiogroup"] label:not(:has(input:checked)),
+html body:has(.st-key-sources_page) [data-testid="stSidebar"] [role="radiogroup"] label:not(:has(input:checked)) {
+    background: transparent !important;
+    border-color: transparent !important;
+    color: #D3DEEA !important;
+}
+
+html body [data-testid="stSidebar"] [role="radiogroup"] label:not(:has(input:checked)) p,
+html body [data-testid="stSidebar"] [role="radiogroup"] label:not(:has(input:checked)) span {
+    color: #D3DEEA !important;
+    -webkit-text-fill-color: #D3DEEA !important;
+    opacity: 1 !important;
+    font-weight: 620 !important;
+}
+
+html body [data-testid="stSidebar"] [role="radiogroup"] label:not(:has(input:checked)) svg {
+    color: #9EB4CD !important;
+    stroke: #9EB4CD !important;
+    opacity: 1 !important;
+}
+
+/* Hover on inactive items */
+html body [data-testid="stSidebar"] [role="radiogroup"] label:not(:has(input:checked)):hover {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.07),
+            rgba(76,188,243,.09)
+        ) !important;
+    border-color: rgba(255,255,255,.08) !important;
+    box-shadow: 0 7px 18px rgba(0,0,0,.10) !important;
+}
+
+/* Active nav item */
+html body [data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked),
+html body:has(.st-key-overview_page) [data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked),
+html body:has(.st-key-comparison_page) [data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked),
+html body:has(.st-key-criterion_page) [data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked),
+html body:has(.st-key-digital_page) [data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked),
+html body:has(.st-key-sources_page) [data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked) {
+    background:
+        linear-gradient(
+            135deg,
+            #1452BC 0%,
+            #247CE8 55%,
+            #42B8F1 100%
+        ) !important;
+
+    border: 1px solid rgba(255,255,255,.16) !important;
+
+    box-shadow:
+        0 12px 26px rgba(0,0,0,.20),
+        0 0 18px rgba(66,184,241,.16),
+        inset 0 1px 0 rgba(255,255,255,.24) !important;
+}
+
+/* gold accent */
+html body [data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked)::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 8px;
+    bottom: 8px;
+    width: 4px;
+    border-radius: 0 999px 999px 0;
+    background:
+        linear-gradient(
+            180deg,
+            #F5D884,
+            #D99F38
+        ) !important;
+    box-shadow:
+        0 0 12px rgba(228,170,61,.55) !important;
+}
+
+/* Active text/icons */
+html body [data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked) p,
+html body [data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked) span {
+    color: #FFFFFF !important;
+    -webkit-text-fill-color: #FFFFFF !important;
+    opacity: 1 !important;
+    font-weight: 760 !important;
+}
+
+html body [data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked) svg {
+    color: #FFFFFF !important;
+    stroke: #FFFFFF !important;
+    opacity: 1 !important;
+}
+
+/* Sidebar info cards */
+html body [data-testid="stSidebar"] .sidebar-model,
+html body [data-testid="stSidebar"] .sidebar-context {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.060),
+            rgba(255,255,255,.025)
+        ) !important;
+
+    border: 1px solid rgba(255,255,255,.075) !important;
+
+    box-shadow:
+        0 9px 20px rgba(0,0,0,.10),
+        inset 0 1px 0 rgba(255,255,255,.03) !important;
+}
+
+html body [data-testid="stSidebar"] .sidebar-model strong,
+html body [data-testid="stSidebar"] .sidebar-context strong {
+    color: #FFFFFF !important;
+    -webkit-text-fill-color: #FFFFFF !important;
+}
+
+html body [data-testid="stSidebar"] .sidebar-model p,
+html body [data-testid="stSidebar"] .sidebar-context p {
+    color: #B4C5D8 !important;
+    -webkit-text-fill-color: #B4C5D8 !important;
+    opacity: 1 !important;
+}
+
+/* Year card at bottom */
+html body [data-testid="stSidebar"] .sidebar-context {
+    color: #FFFFFF !important;
+}
+
+/* Keep the sidebar decoration visible on dark rail */
+html body [data-testid="stSidebar"]::before,
+html body [data-testid="stSidebar"]::after {
+    z-index: 0 !important;
+}
+
+html body [data-testid="stSidebar"] [data-testid="stSidebarContent"] {
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+/* =========================================================
+   SIDEBAR CLEANUP — FINAL POLISH
+   Remove odd right-side blocks, tighten spacing, lower waves
+   ========================================================= */
+
+/* Remove legacy pseudo-elements that create the strange blocks
+   on the right side of inactive menu items. */
+html body [data-testid="stSidebar"] [role="radiogroup"] label::after,
+html body [data-testid="stSidebar"] [role="radiogroup"] label:not(:has(input:checked))::after {
+    content: none !important;
+    display: none !important;
+    background: none !important;
+    box-shadow: none !important;
+}
+
+/* Keep ONLY the left gold accent on the active item. */
+html body [data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked)::after {
+    content: none !important;
+    display: none !important;
+}
+
+/* Compact navigation spacing */
+html body [data-testid="stSidebar"] [role="radiogroup"] {
+    gap: 5px !important;
+    margin-top: 6px !important;
+    margin-bottom: 10px !important;
+}
+
+/* Inactive menu: flat/translucent, no fake card block */
+html body [data-testid="stSidebar"] [role="radiogroup"] label:not(:has(input:checked)) {
+    min-height: 43px !important;
+    padding: 9px 11px !important;
+    margin: 0 !important;
+
+    background: transparent !important;
+    border: 1px solid transparent !important;
+    border-radius: 11px !important;
+
+    box-shadow: none !important;
+    transform: none !important;
+
+    transition:
+        background .16s ease,
+        border-color .16s ease,
+        transform .16s ease !important;
+}
+
+/* Inactive hover: one clean translucent surface */
+html body [data-testid="stSidebar"] [role="radiogroup"] label:not(:has(input:checked)):hover {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.055),
+            rgba(76,188,243,.075)
+        ) !important;
+
+    border-color: rgba(255,255,255,.075) !important;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.025) !important;
+
+    transform: translateX(2px) !important;
+}
+
+/* Active item: slightly more compact and less glowing */
+html body [data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked) {
+    min-height: 44px !important;
+    padding: 9px 11px !important;
+    margin: 0 !important;
+
+    border-radius: 11px !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            #174FAF 0%,
+            #2478DD 58%,
+            #39AEE9 100%
+        ) !important;
+
+    border: 1px solid rgba(255,255,255,.14) !important;
+
+    box-shadow:
+        0 8px 18px rgba(0,0,0,.16),
+        inset 0 1px 0 rgba(255,255,255,.22) !important;
+
+    transform: none !important;
+}
+
+/* Gold accent slimmer and cleaner */
+html body [data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked)::before {
+    left: 0 !important;
+    top: 10px !important;
+    bottom: 10px !important;
+    width: 3px !important;
+
+    background:
+        linear-gradient(
+            180deg,
+            #F3D37B,
+            #D79D32
+        ) !important;
+
+    box-shadow:
+        0 0 8px rgba(228,170,61,.38) !important;
+}
+
+/* Better text rhythm */
+html body [data-testid="stSidebar"] [role="radiogroup"] label p,
+html body [data-testid="stSidebar"] [role="radiogroup"] label span {
+    line-height: 1.28 !important;
+}
+
+html body [data-testid="stSidebar"] [role="radiogroup"] label:not(:has(input:checked)) p,
+html body [data-testid="stSidebar"] [role="radiogroup"] label:not(:has(input:checked)) span {
+    color: #D4DFEB !important;
+    -webkit-text-fill-color: #D4DFEB !important;
+}
+
+html body [data-testid="stSidebar"] [role="radiogroup"] label:not(:has(input:checked)) svg {
+    color: #A8BCD1 !important;
+    stroke: #A8BCD1 !important;
+}
+
+/* Sidebar info cards: slightly smaller and denser */
+html body [data-testid="stSidebar"] .sidebar-model,
+html body [data-testid="stSidebar"] .sidebar-context {
+    padding: 14px 14px !important;
+    border-radius: 13px !important;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.052),
+            rgba(255,255,255,.020)
+        ) !important;
+
+    box-shadow:
+        0 7px 16px rgba(0,0,0,.08),
+        inset 0 1px 0 rgba(255,255,255,.025) !important;
+}
+
+html body [data-testid="stSidebar"] .sidebar-model {
+    margin-top: 10px !important;
+    margin-bottom: 8px !important;
+}
+
+html body [data-testid="stSidebar"] .sidebar-context {
+    margin-top: 6px !important;
+}
+
+/* Keep sidebar model icon compact */
+html body [data-testid="stSidebar"] .sidebar-model .object-icon {
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+    border-radius: 11px !important;
+}
+
+/* Move decorative wave down so it no longer cuts through the model card */
+html body [data-testid="stSidebar"]::after {
+    bottom: -58px !important;
+    height: 205px !important;
+    opacity: .48 !important;
+}
+
+/* Keep skyline lower too */
+html body [data-testid="stSidebar"] .sidebar-illustration {
+    min-height: 150px !important;
+    margin-top: 8px !important;
+}
+
+html body [data-testid="stSidebar"] .sidebar-illustration::before {
+    bottom: -12px !important;
+    height: 105px !important;
+    opacity: .64 !important;
+}
+
+html body [data-testid="stSidebar"] .sidebar-illustration p {
+    bottom: 94px !important;
+    color: #AFC1D5 !important;
+    -webkit-text-fill-color: #AFC1D5 !important;
+}
+
+/* Avoid bottom info card being visually clipped */
+html body [data-testid="stSidebar"] [data-testid="stSidebarContent"] {
+    padding-bottom: 28px !important;
+}
+
+/* Slightly thinner sidebar scrollbar */
+html body [data-testid="stSidebar"] *::-webkit-scrollbar {
+    width: 7px !important;
+}
+
+html body [data-testid="stSidebar"] *::-webkit-scrollbar-track {
+    background: rgba(255,255,255,.035) !important;
+}
+
+html body [data-testid="stSidebar"] *::-webkit-scrollbar-thumb {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(120,164,211,.72),
+            rgba(72,112,158,.78)
+        ) !important;
+
+    border: 1px solid rgba(255,255,255,.06) !important;
+}
+
+/* =========================================================
+   SIDEBAR BOTTOM FIX — FINAL
+   Clean footer area, reduce empty space, soften city/waves
+   ========================================================= */
+
+/* Make the bottom utility area more compact */
+html body [data-testid="stSidebar"] .sidebar-context {
+    margin-top: 8px !important;
+    margin-bottom: 8px !important;
+    padding: 14px 14px 13px !important;
+}
+
+/* Refresh button: dark glass instead of a bright white block */
+html body [data-testid="stSidebar"] [data-testid="stButton"] button {
+    min-height: 42px !important;
+    border-radius: 11px !important;
+
+    color: #DDE9F6 !important;
+    -webkit-text-fill-color: #DDE9F6 !important;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.075),
+            rgba(255,255,255,.035)
+        ) !important;
+
+    border: 1px solid rgba(255,255,255,.10) !important;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.035),
+        0 6px 14px rgba(0,0,0,.08) !important;
+
+    font-weight: 650 !important;
+}
+
+html body [data-testid="stSidebar"] [data-testid="stButton"] button:hover {
+    color: #FFFFFF !important;
+    -webkit-text-fill-color: #FFFFFF !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(47,111,214,.90),
+            rgba(76,188,243,.84)
+        ) !important;
+
+    border-color: rgba(255,255,255,.15) !important;
+}
+
+/* Compact the decorative footer area */
+html body [data-testid="stSidebar"] .sidebar-illustration {
+    min-height: 118px !important;
+    height: 118px !important;
+    margin-top: 8px !important;
+    margin-bottom: 0 !important;
+    overflow: hidden !important;
+}
+
+/* Footer label sits neatly above the skyline */
+html body [data-testid="stSidebar"] .sidebar-illustration p {
+    left: 12px !important;
+    bottom: 72px !important;
+
+    margin: 0 !important;
+
+    color: #AFC1D5 !important;
+    -webkit-text-fill-color: #AFC1D5 !important;
+
+    font-size: 9.5px !important;
+    line-height: 1.35 !important;
+    font-weight: 650 !important;
+
+    opacity: .92 !important;
+}
+
+/* Skyline: shorter, darker, less ghost-like */
+html body [data-testid="stSidebar"] .sidebar-illustration::before {
+    left: 0 !important;
+    right: 0 !important;
+    bottom: -8px !important;
+
+    height: 72px !important;
+
+    opacity: .38 !important;
+
+    background-size: cover !important;
+    background-position: center bottom !important;
+
+    filter:
+        saturate(.82)
+        brightness(.78) !important;
+}
+
+/* Global wave should stay at the very bottom only */
+html body [data-testid="stSidebar"]::after {
+    left: -18% !important;
+    right: -15% !important;
+    bottom: -94px !important;
+
+    height: 165px !important;
+
+    opacity: .34 !important;
+}
+
+/* Avoid large dead zone at the bottom */
+html body [data-testid="stSidebar"] [data-testid="stSidebarContent"] {
+    padding-bottom: 12px !important;
+}
+
+/* The final text/footer should not create excess vertical space */
+html body [data-testid="stSidebar"] .sidebar-illustration + * {
+    margin-top: 0 !important;
+}
+
+/* Keep the year card compact */
+html body [data-testid="stSidebar"] .sidebar-context strong {
+    font-size: 11px !important;
+}
+
+html body [data-testid="stSidebar"] .sidebar-context p {
+    margin-top: 7px !important;
+    margin-bottom: 0 !important;
+    font-size: 9.6px !important;
+    line-height: 1.45 !important;
+}

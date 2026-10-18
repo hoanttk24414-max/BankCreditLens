@@ -1,8 +1,31 @@
 {
   "year": 2025,
-  "criteria_count": 15,
+  "criteria_count_defined": 15,
+  "criteria_count_active": 15,
+  "active_criteria": [
+    "NPL",
+    "Group2",
+    "LLR",
+    "CoR",
+    "CAR",
+    "EquityAssets",
+    "CASA",
+    "DepositsLiabilities",
+    "ROA",
+    "ROE",
+    "NIM",
+    "CIR",
+    "D1",
+    "D2",
+    "D3"
+  ],
   "digital_weights": "equal_25_divided_by_3",
+  "financial_normalization": "cross_sectional_min_max",
+  "digital_normalization": "score_0_3_divided_by_3",
   "skipped_indicators": [],
-  "method": "Min-Max for financial; score/3 for D1-D3; weights in points",
-  "disclaimer": "Research comparison only; digital evidence marked review is not independently verified."
+  "missing_value_rule": "do_not_replace_NA_with_zero",
+  "identical_indicator_rule": "remove_if_max_equals_min_then_renormalize_remaining_weights_to_100",
+  "digital_evidence_rule": "D1_D2_D3_require_rubric_and_score_rationale",
+  "method": "Min-Max for financial criteria; score/3 for D1-D3; weights expressed in percentage points.",
+  "disclaimer": "Research comparison only; this is not a credit rating. Digital evidence marked review has not yet been independently verified."
 }

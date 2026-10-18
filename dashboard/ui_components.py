@@ -38,28 +38,54 @@ def icon(name, tone="blue"):
             + ICONS.get(name, ICONS["file"]) + '</svg></span>')
 
 
+@lru_cache(maxsize=1)
+def _banking_city_data():
+    """
+    Load dashboard/assets/banking-city.png as an inline data URI.
+
+    Using a data URI makes the asset display reliably both locally and after
+    Streamlit deployment without configuring a static-files route.
+    """
+    asset = (
+        Path(__file__).with_name("assets")
+        / "banking-city.png"
+    )
+
+    try:
+        if not asset.is_file():
+            return None
+
+        encoded = b64encode(
+            asset.read_bytes()
+        ).decode("ascii")
+
+        return f"data:image/png;base64,{encoded}"
+
+    except OSError:
+        return None
+
+
 def bank_art(location):
-    """Small original isometric banking object with decorative depth only."""
-    prefix = "bank-" + location
-    return f'''<svg class="bank-art" viewBox="0 0 340 210" aria-hidden="true">
-      <defs><linearGradient id="{prefix}-roof" x2=".8" y2="1"><stop stop-color="#bcefff"/><stop offset=".48" stop-color="#6197ff"/><stop offset="1" stop-color="#1242bc"/></linearGradient>
-      <linearGradient id="{prefix}-body" x2="1" y2="1"><stop stop-color="#eefaff"/><stop offset=".5" stop-color="#82baff"/><stop offset="1" stop-color="#265bd6"/></linearGradient></defs>
-      <g fill="#4389ed" opacity=".17"><path d="M8 155V82l22-9v87ZM38 155V48l24-9v126ZM68 156V22l27-9v160ZM267 164V52l24-10v126ZM299 173V91l26-10v95Z"/></g>
-      <path d="m64 171 122-42 111 46-125 32Z" fill="#2165ee" opacity=".15"/>
-      <g stroke="#b7e8ff" stroke-width="1.4"><path d="m79 159 102-34 99 34-100 35Z" fill="url(#{prefix}-roof)"/>
-      <path d="m85 150 95-31 91 31-92 31Z" fill="url(#{prefix}-body)"/>
-      <path d="m112 86 72-23 64 24v64l-66 24-70-25Z" fill="#1e55c4"/>
-      <path d="m112 86 70 20v69l-70-25Z" fill="url(#{prefix}-body)"/>
-      <path d="m182 106 66-19v64l-66 24Z" fill="#356ada"/>
-      <g fill="url(#{prefix}-body)"><path d="m121 99 12 4v49l-12-4Zm23 7 12 4v49l-12-4Zm23 7 12 4v49l-12-4ZM193 110l11-4v49l-11 4Zm22-7 11-4v49l-11 4Z"/></g>
-      <path d="m95 89 86-65 83 61-83 27Z" fill="url(#{prefix}-roof)"/>
-      <path d="m111 86 70-49 64 46-64 20Z" fill="#c5e5ff"/>
-      <path d="m124 82 57-37 51 36-51 16Z" fill="#487ee4"/>
-      <path d="m95 89 86 23 83-27v8l-83 28-86-25Z" fill="#88c5ff"/></g>
-      <text x="181" y="81" text-anchor="middle" fill="white" font-family="system-ui" font-weight="700" font-size="13">BANK</text>
-      <g fill="#33baf5"><path d="M46 101h9v30h-9Zm13-15h9v45h-9Zm13-17h9v62h-9Z"/><circle cx="284" cy="102" r="15" opacity=".7"/></g>
-      <path d="m278 102 4 4 8-9" fill="none" stroke="white" stroke-width="2"/>
-    </svg>'''
+    """
+    Professional banking/report artwork using the project's
+    dashboard/assets/banking-city.png asset.
+    """
+    variant = (
+        "sidebar"
+        if location == "sidebar"
+        else "header"
+    )
+
+    source = _banking_city_data()
+
+    if not source:
+        return ""
+
+    return (
+        f'<div class="report-art report-art-{variant}" aria-hidden="true">'
+        f'<img class="report-art-image" src="{source}" alt="" />'
+        f'</div>'
+    )
 
 
 def text(value):
@@ -242,23 +268,48 @@ def panel(name):
     return st.container(border=False, key="panel_" + name)
 
 
-@lru_cache(maxsize=1)
-def _banking_city_source():
-    asset = Path(__file__).with_name("assets") / "banking-city.png"
-    return "data:image/png;base64," + b64encode(asset.read_bytes()).decode("ascii")
-
-
 def overview_art(location):
-    return (f'<img class="overview-bank-art art-{safe(location)}" '
-            f'src="{_banking_city_source()}" alt="" aria-hidden="true" />')
+    """Compatibility wrapper for the professional report artwork."""
+    return bank_art(
+        "sidebar"
+        if location == "sidebar"
+        else "header"
+    )
 
 
-def page_header(title, subtitle, section, *, overview=False):
-    artwork = overview_art("hero") if overview else bank_art("header")
-    html(f'<header class="page-heading"><div class="heading-copy"><div class="page-context">Nghiên cứu của nhóm · {YEAR}</div>'
-         f'<h1>{safe(title)}</h1><p>{safe(subtitle)}</p></div>'
-         f'<div class="header-art">{artwork}</div><div class="year-card">{icon("calendar" if overview else "file")}'
-         f'<span>Năm đánh giá<strong>{YEAR}</strong></span></div></header>')
+def page_header(
+    title,
+    subtitle,
+    section,
+    *,
+    overview=False,
+    mascot_state=None,
+    mascot_message=None,
+):
+    """
+    Professional report-style page header.
+
+    mascot_state / mascot_message are retained only for backward-compatible
+    calls; they are intentionally ignored.
+    """
+    artwork = bank_art(
+        "header"
+    )
+
+    html(
+        f'<header class="page-heading">'
+        f'<div class="heading-copy">'
+        f'<div class="page-context">Báo cáo phân tích · {YEAR}</div>'
+        f'<h1>{safe(title)}</h1>'
+        f'<p>{safe(subtitle)}</p>'
+        f'</div>'
+        f'<div class="header-art">{artwork}</div>'
+        f'<div class="year-card">'
+        f'{icon("calendar" if overview else "file")}'
+        f'<span>Năm đánh giá<strong>{YEAR}</strong></span>'
+        f'</div>'
+        f'</header>'
+    )
 
 
 def section_header(title, note=None, symbol=None, tone="blue"):
@@ -302,6 +353,7 @@ def criterion_detail_card(row, units, bank_name):
     direction_label = DIRECTION_LABELS.get(direction, text(row.get("direction")))
     direction_tone = "low" if direction == "low" else "high" if direction == "high" else "fixed"
     direction_icon = "trend-down" if direction == "low" else "trend-up" if direction == "high" else "chip"
+
     cards = (
         ("Giá trị gốc", number(row.get("raw_value")), units.get(row.get("criterion"), "—"), "blue", "coins"),
         ("Chuẩn hóa (0–1)", number(row.get("normalized_0_1")), "", "violet", "bars"),
@@ -309,32 +361,75 @@ def criterion_detail_card(row, units, bank_name):
         ("Trọng số hiệu lực", number(row.get("effective_weight")), "điểm", "gold", "star"),
         ("Điểm đóng góp", number(row.get("weighted_score")), "điểm", "blue", "trophy"),
     )
+
     metrics = "".join(
-        f'<div class="criterion-metric tone-{tone}">{icon(symbol, tone)}<div><span>{safe(label)}</span>'
-        f'<strong>{safe(value)}<small>{safe(unit)}</small></strong></div></div>'
+        f'<div class="criterion-metric tone-{tone}">'
+        f'{icon(symbol, tone)}'
+        f'<div><span>{safe(label)}</span>'
+        f'<strong>{safe(value)}<small>{safe(unit)}</small></strong></div>'
+        f'</div>'
         for label, value, unit, tone, symbol in cards
     )
-    html(f'<div class="criterion-detail-identity"><div><strong>{safe(row.get("criterion"))}</strong>'
-         f'<p>{safe(CRITERION_LABELS.get(row.get("criterion"), row.get("criterion")))}</p></div>'
-         f'<span class="direction-badge direction-{direction_tone}">{icon(direction_icon, direction_tone)}'
-         f'{safe(direction_label)}</span></div>'
-         f'<div class="criterion-metadata">'
-         f'<p>{icon("layers", "violet")}<span>Nhóm tiêu chí</span><strong>{safe(row.get("group_label"))}</strong></p>'
-         f'<p>{icon("file", "blue")}<span>Loại tiêu chí</span><strong>{"Định tính" if row.get("criterion") in ("D1", "D2", "D3") else "Chỉ tiêu tài chính"}</strong></p>'
-         f'<p>{icon("coins", "teal")}<span>Đơn vị</span><strong>{safe(units.get(row.get("criterion"), "—"))}</strong></p></div>'
-         f'<h3 class="criterion-metrics-title">Các chỉ số chi tiết</h3>'
-         f'<div class="criterion-metrics">{metrics}</div>')
+
+    html(
+        f'<div class="criterion-detail-identity">'
+        f'<div><strong>{safe(row.get("criterion"))}</strong>'
+        f'<p>{safe(CRITERION_LABELS.get(row.get("criterion"), row.get("criterion")))}</p></div>'
+        f'<span class="direction-badge direction-{direction_tone}">'
+        f'{icon(direction_icon, direction_tone)}'
+        f'{safe(direction_label)}</span>'
+        f'</div>'
+        f'<div class="criterion-metadata">'
+        f'<p>{icon("layers", "violet")}<span>Nhóm tiêu chí</span>'
+        f'<strong>{safe(row.get("group_label"))}</strong></p>'
+        f'<p>{icon("file", "blue")}<span>Loại tiêu chí</span>'
+        f'<strong>{"Định tính" if row.get("criterion") in ("D1", "D2", "D3") else "Chỉ tiêu tài chính"}</strong></p>'
+        f'<p>{icon("coins", "teal")}<span>Đơn vị</span>'
+        f'<strong>{safe(units.get(row.get("criterion"), "—"))}</strong></p>'
+        f'</div>'
+        f'<h3 class="criterion-metrics-title">Các chỉ số chi tiết</h3>'
+        f'<div class="criterion-metrics">{metrics}</div>'
+    )
 
 
 def metrics(items):
     cards = []
-    symbols = ("bank", "layers", "bars", "file", "trophy", "star")
-    tones = ("blue", "violet", "teal", "violet", "gold", "blue")
+
+    symbols = (
+        "bank",
+        "layers",
+        "bars",
+        "file",
+        "trophy",
+        "star",
+    )
+
+    tones = (
+        "blue",
+        "violet",
+        "teal",
+        "violet",
+        "gold",
+        "blue",
+    )
+
     for index, (label, value, note) in enumerate(items):
-        cards.append(f'<article class="metric-tile">{icon(symbols[index % 6], tones[index % 6])}<div>'
-                     f'<div class="metric-value">{safe(value)}</div><div class="metric-label">{safe(label)}</div>'
-                     f'<div class="metric-note">{safe(note)}</div></div></article>')
-    html(f'<div class="metric-grid" style="--count:{len(items)}">' + "".join(cards) + '</div>')
+        cards.append(
+            f'<article class="metric-tile metric-tile-{index + 1}">'
+            f'{icon(symbols[index % len(symbols)], tones[index % len(tones)])}'
+            f'<div>'
+            f'<div class="metric-value">{safe(value)}</div>'
+            f'<div class="metric-label">{safe(label)}</div>'
+            f'<div class="metric-note">{safe(note)}</div>'
+            f'</div>'
+            f'</article>'
+        )
+
+    html(
+        f'<div class="metric-grid" style="--count:{len(items)}">'
+        + "".join(cards)
+        + '</div>'
+    )
 
 
 def ranking_table(ranking):
@@ -393,19 +488,37 @@ def bank_summary(summary, strongest, weakest):
 
 def digital_cards(record, labels):
     cards = []
+
     styles = {
         "D1": ("violet", "fingerprint"),
         "D2": ("teal", "file"),
         "D3": ("blue", "chip"),
     }
+
     for code in ("D1", "D2", "D3"):
         value = record.get(f"{code}_score_0_3")
         tone, symbol = styles[code]
-        cards.append(f'<article class="digital-card digital-{code.lower()} tone-{tone}">{icon(symbol, tone)}<div><div class="digital-card-top"><span class="digital-token">{code}</span>'
-                     f'{status_badge(record.get(code + "_status"))}</div><h2>{safe(labels[code])}</h2>'
-                     f'<div class="digital-value">{safe(number(value, 0))}<span> / 3</span></div>'
-                     '</div><span class="digital-card-mark" aria-hidden="true"></span></article>')
-    html('<div class="digital-grid">' + "".join(cards) + '</div>')
+
+        cards.append(
+            f'<article class="digital-card digital-{code.lower()} tone-{tone}">'
+            f'{icon(symbol, tone)}'
+            f'<div>'
+            f'<div class="digital-card-top">'
+            f'<span class="digital-token">{code}</span>'
+            f'{status_badge(record.get(code + "_status"))}'
+            f'</div>'
+            f'<h2>{safe(labels[code])}</h2>'
+            f'<div class="digital-value">{safe(number(value, 0))}<span> / 3</span></div>'
+            f'</div>'
+            f'<span class="digital-card-mark" aria-hidden="true"></span>'
+            f'</article>'
+        )
+
+    html(
+        '<div class="digital-grid">'
+        + "".join(cards)
+        + '</div>'
+    )
 
 
 def digital_matrix_table(dataset, selected):
@@ -461,18 +574,351 @@ def bank_mini_cards(ranking, groups):
 
 
 def analytical_summary(ranking, groups):
+    """
+    Interpret each selected bank relative to the current comparison set.
+
+    Avoids repeating the heatmap:
+    - collapsed row: total score, rank, number of groups above selection average;
+    - expanded row: deviation from the comparison-set average by group.
+
+    The exact 4 group scores remain in the heatmap, so they are not repeated here.
+    """
+    html("""
+    <style>
+    .analysis-disclosure {
+        margin: 0 0 7px 0;
+        border: 0;
+    }
+
+    .analysis-disclosure > summary {
+        list-style: none;
+        cursor: pointer;
+        outline: none;
+    }
+
+    .analysis-disclosure > summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .analysis-disclosure > summary::marker {
+        display: none;
+        content: "";
+    }
+
+    .analysis-disclosure .analysis-arrow {
+        flex: 0 0 auto;
+        transition: transform .18s ease, background .18s ease;
+        cursor: pointer;
+        user-select: none;
+    }
+
+    .analysis-disclosure[open] .analysis-arrow {
+        transform: rotate(90deg);
+        background: color-mix(in srgb, var(--bank) 18%, white);
+    }
+
+    .analysis-disclosure[open] > summary.analysis-row {
+        margin-bottom: 0;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .analysis-detail {
+        margin: -1px 7px 7px 7px;
+        padding: 11px 12px 12px;
+        border: 1px solid color-mix(in srgb, var(--bank) 18%, #dceafa);
+        border-top: 1px dashed color-mix(in srgb, var(--bank) 22%, #dceafa);
+        border-left: 4px solid var(--bank);
+        border-radius: 0 0 10px 10px;
+        background: linear-gradient(
+            115deg,
+            color-mix(in srgb, var(--bank) 5%, white),
+            #ffffff 80%
+        );
+        color: #294773;
+        box-shadow: 0 5px 12px #2863a40a;
+    }
+
+    .analysis-detail-title {
+        margin: 0 0 9px;
+        color: #173b72;
+        font-size: 10.5px;
+        font-weight: 800;
+        line-height: 1.3;
+    }
+
+    .analysis-delta-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 7px;
+    }
+
+    .analysis-delta-card {
+        min-width: 0;
+        padding: 8px 9px;
+        border: 1px solid #dceafa;
+        border-radius: 8px;
+        background: #ffffffd9;
+    }
+
+    .analysis-delta-card span {
+        display: block;
+        margin-bottom: 3px;
+        color: #6b7f9f;
+        font-size: 9px;
+        line-height: 1.25;
+    }
+
+    .analysis-delta-card strong {
+        display: block;
+        font-size: 11px;
+        line-height: 1.3;
+    }
+
+    .analysis-delta-card small {
+        display: block;
+        margin-top: 2px;
+        font-size: 8.5px;
+        color: #7b8eaa;
+    }
+
+    .analysis-delta-pos strong {
+        color: #23967f;
+    }
+
+    .analysis-delta-neg strong {
+        color: #d45c6c;
+    }
+
+    .analysis-delta-neutral strong {
+        color: #5f7396;
+    }
+
+    .analysis-detail-foot {
+        margin: 9px 0 0;
+        padding-top: 8px;
+        border-top: 1px solid #e5eef9;
+        color: #5f7396;
+        font-size: 9.5px;
+        line-height: 1.5;
+    }
+
+    .analysis-detail-foot strong {
+        color: var(--bank);
+    }
+
+    @media (max-width: 900px) {
+        .analysis-delta-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+    </style>
+    """)
+
+    if ranking is None or ranking.empty:
+        return
+
+    if groups is None or groups.empty:
+        for row in ranking.to_dict("records"):
+            ticker = row["ticker"]
+            color = BANK_COLORS.get(ticker, "#345da3")
+
+            html(
+                f'<details class="analysis-disclosure" style="--bank:{color}">'
+                f'<summary class="analysis-row">'
+                f'<span class="rank-number plain">{safe(number(row.get("rank"), 0))}</span>'
+                f'{bank_logo(ticker)}'
+                f'<div>'
+                f'<strong>{safe(ticker)} · {safe(number(row.get("total_score")))}</strong>'
+                f'<small> / 100 · Hạng {safe(number(row.get("rank"), 0))}</small>'
+                f'<p>Chưa có dữ liệu nhóm để so sánh tương đối.</p>'
+                f'</div>'
+                f'<span class="analysis-arrow" aria-hidden="true">›</span>'
+                f'</summary>'
+                f'<div class="analysis-detail">'
+                f'<p class="analysis-detail-foot" style="margin-top:0;padding-top:0;border-top:0">'
+                f'Chưa có dữ liệu điểm nhóm cho {safe(ticker)}.'
+                f'</p>'
+                f'</div>'
+                f'</details>'
+            )
+
+        return
+
+    group_means = (
+        groups
+        .groupby(
+            ["group", "group_label"],
+            as_index=False,
+        )["group_score_100"]
+        .mean()
+        .rename(
+            columns={
+                "group_score_100": "_mean",
+            }
+        )
+    )
+
+    order_map = {
+        group: index
+        for index, group in enumerate(GROUP_ORDER)
+    }
+
     for row in ranking.to_dict("records"):
-        part = groups.loc[groups.ticker.eq(row["ticker"])]
-        strong = part.loc[part.group_score_100.eq(part.group_score_100.max()), "group_label"].tolist()
-        weak = part.loc[part.group_score_100.eq(part.group_score_100.min()), "group_label"].tolist()
-        color = BANK_COLORS.get(row["ticker"], "#345da3")
-        html(f'<div class="analysis-row" style="--bank:{color}">'
-             f'<span class="rank-number plain">{safe(number(row["rank"], 0))}</span>'
-             f'{bank_logo(row["ticker"])}'
-             f'<div><strong>{safe(row["ticker"])} · {safe(number(row["total_score"]))}</strong>'
-             f'<small> / 100 · Hạng {safe(number(row["rank"], 0))}</small>'
-             f'<p>Mạnh nhất: {safe(" · ".join(strong))}<br><span>Thấp nhất: {safe(" · ".join(weak))}</span></p></div>'
-             '<span class="analysis-arrow" aria-hidden="true">›</span></div>')
+        ticker = row["ticker"]
+
+        part = groups.loc[
+            groups.ticker.eq(ticker)
+        ].copy()
+
+        if part.empty:
+            continue
+
+        part = part.merge(
+            group_means,
+            on=[
+                "group",
+                "group_label",
+            ],
+            how="left",
+        )
+
+        part = part.sort_values(
+            "group",
+            key=lambda values: values.map(order_map).fillna(len(order_map)),
+            kind="stable",
+        )
+
+        part["_score"] = pd.to_numeric(
+            part["group_score_100"],
+            errors="coerce",
+        )
+
+        part["_mean"] = pd.to_numeric(
+            part["_mean"],
+            errors="coerce",
+        )
+
+        part["_delta"] = (
+            part["_score"]
+            - part["_mean"]
+        )
+
+        valid = part.loc[
+            part["_delta"].notna()
+        ].copy()
+
+        above_count = int(
+            (valid["_delta"] > 0.0001).sum()
+        )
+
+        total_groups = int(
+            len(valid)
+        )
+
+        color = BANK_COLORS.get(
+            ticker,
+            "#345da3",
+        )
+
+        delta_cards = []
+
+        for group_row in valid.to_dict("records"):
+            delta = float(
+                group_row["_delta"]
+            )
+
+            if delta > 0.05:
+                delta_class = "analysis-delta-pos"
+                state = "Trên trung bình"
+                sign = "+"
+            elif delta < -0.05:
+                delta_class = "analysis-delta-neg"
+                state = "Dưới trung bình"
+                sign = ""
+            else:
+                delta_class = "analysis-delta-neutral"
+                state = "Xấp xỉ trung bình"
+                sign = ""
+
+            delta_cards.append(
+                f'<div class="analysis-delta-card {delta_class}">'
+                f'<span>{safe(group_row.get("group_label"))}</span>'
+                f'<strong>{sign}{safe(number(delta))} điểm</strong>'
+                f'<small>{safe(state)} của nhóm đang chọn</small>'
+                f'</div>'
+            )
+
+        if valid.empty:
+            best_relative = None
+            weakest_relative = None
+        else:
+            best_row = valid.loc[
+                valid["_delta"].idxmax()
+            ]
+
+            weak_row = valid.loc[
+                valid["_delta"].idxmin()
+            ]
+
+            best_relative = (
+                str(
+                    best_row["group_label"]
+                ),
+                float(
+                    best_row["_delta"]
+                ),
+            )
+
+            weakest_relative = (
+                str(
+                    weak_row["group_label"]
+                ),
+                float(
+                    weak_row["_delta"]
+                ),
+            )
+
+        if best_relative is None:
+            foot = (
+                "Chưa đủ dữ liệu để xác định vị thế tương đối."
+            )
+        else:
+            best_label, best_delta = best_relative
+            weak_label, weak_delta = weakest_relative
+
+            foot = (
+                f'Nổi bật tương đối nhất: <strong>{safe(best_label)}</strong> '
+                f'({("+" if best_delta >= 0 else "")}{safe(number(best_delta))} điểm so với trung bình). '
+                f'Khoảng cách tương đối thấp nhất nằm ở <strong>{safe(weak_label)}</strong> '
+                f'({("+" if weak_delta >= 0 else "")}{safe(number(weak_delta))} điểm).'
+            )
+
+        html(
+            f'<details class="analysis-disclosure" style="--bank:{color}">'
+            f'<summary class="analysis-row">'
+            f'<span class="rank-number plain">{safe(number(row.get("rank"), 0))}</span>'
+            f'{bank_logo(ticker)}'
+            f'<div>'
+            f'<strong>{safe(ticker)} · {safe(number(row.get("total_score")))}</strong>'
+            f'<small> / 100 · Hạng {safe(number(row.get("rank"), 0))}</small>'
+            f'<p>{safe(above_count)} / {safe(total_groups)} nhóm cao hơn trung bình của lựa chọn hiện tại</p>'
+            f'</div>'
+            f'<span class="analysis-arrow" aria-hidden="true">›</span>'
+            f'</summary>'
+            f'<div class="analysis-detail">'
+            f'<p class="analysis-detail-title">'
+            f'Vị thế so với trung bình các ngân hàng đang chọn'
+            f'</p>'
+            f'<div class="analysis-delta-grid">'
+            f'{"".join(delta_cards)}'
+            f'</div>'
+            f'<p class="analysis-detail-foot">'
+            f'{foot}'
+            f'</p>'
+            f'</div>'
+            f'</details>'
+        )
 
 
 def methodology_steps(metadata):
