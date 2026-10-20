@@ -1,10 +1,58 @@
-# Credi# BankCreditLens
+# BankCreditLens
 
 **BankCreditLens** là dashboard đánh giá tương đối chất lượng tín dụng ngân hàng, nền tảng tài chính và mức độ chuyển đổi số của 5 ngân hàng thương mại Việt Nam trong năm 2025.
 
 Mô hình sử dụng **Bank Credit–Digital Score (BCDS)** trên thang 100 điểm, kết hợp **12 chỉ tiêu tài chính – tín dụng** và **3 tiêu chí chuyển đổi số**.
 
 > BCDS là công cụ phân tích đa tiêu chí trong phạm vi mẫu nghiên cứu, **không phải xếp hạng tín nhiệm chính thức**.
+
+---
+
+## Hướng dẫn tra cứu nhanh
+
+Nếu cần kiểm tra nhanh **kết quả nghiên cứu, dữ liệu đầu vào hoặc mã nguồn tính điểm**, có thể tra cứu theo bảng sau:
+
+| Nội dung cần xem | Vị trí trong repository | Mô tả |
+|---|---|---|
+| **Kết quả BCDS cuối cùng** | `output/bank_ranking_2025.csv` | FCS, Digital Score, BCDS và thứ hạng của 5 ngân hàng |
+| **Điểm theo 4 nhóm tiêu chí** | `output/group_scores_2025.csv` | Chất lượng tín dụng, vốn và nguồn vốn, sinh lời và hiệu quả, chuyển đổi số |
+| **Điểm chi tiết 15 tiêu chí** | `output/criterion_scores_2025.csv` | Giá trị chuẩn hóa và điểm đóng góp của từng tiêu chí |
+| **Dataset tổng hợp trước khi chấm điểm** | `output/merged_dataset_2025.csv` | Dữ liệu sau khi ghép tài chính – tín dụng và chuyển đổi số |
+| **Dữ liệu tài chính sạch** | `output/credit_data_clean.csv` | Bộ dữ liệu tài chính sau xử lý |
+| **File Excel dữ liệu tài chính** | `output/credit_data.xlsx` | Dữ liệu tài chính và các chỉ tiêu dưới dạng Excel |
+| **Thông tin cấu hình chấm điểm** | `output/scoring_metadata.json` | Trọng số, chiều tác động và metadata của mô hình |
+| **Mã nguồn chấm điểm BCDS** | `scoring_model.py` | Chuẩn hóa Min–Max, áp dụng trọng số và tính BCDS |
+| **Xử lý dữ liệu tài chính** | `credit_data.py` | Thu thập, làm sạch và tính 12 chỉ tiêu tài chính – tín dụng |
+| **Xử lý dữ liệu chuyển đổi số** | `digital_data_equal.py` | Chuẩn hóa dữ liệu D1, D2, D3 |
+| **Dataset chuyển đổi số** | `digital_dataset_equal_2025.csv` | Điểm D1–D3 của từng ngân hàng |
+| **Minh chứng chuyển đổi số** | `digital_evidence_2025.csv` | Nguồn và minh chứng dùng để chấm D1–D3 |
+| **Dashboard chính** | `dashboard/app.py` | File chạy giao diện Streamlit |
+| **Biểu đồ dashboard** | `dashboard/charts.py` | Các biểu đồ xếp hạng, heatmap, radar và so sánh |
+| **Xử lý dữ liệu cho dashboard** | `dashboard/data_adapter.py` | Đọc và chuẩn hóa dữ liệu đầu ra để hiển thị |
+| **Giao diện dashboard** | `dashboard/ui_components.py`, `dashboard/styles.css` | Thành phần UI và định dạng giao diện |
+| **Chạy local trên Windows** | `run_local.bat` | Double-click để khởi động dashboard local |
+
+### Trình tự đề xuất khi kiểm tra repository
+
+```text
+README.md
+   ↓
+output/bank_ranking_2025.csv
+   ↓
+output/group_scores_2025.csv
+   ↓
+output/criterion_scores_2025.csv
+   ↓
+scoring_model.py
+   ↓
+credit_data.py / digital_data_equal.py
+   ↓
+dashboard/app.py
+```
+
+> Nếu chỉ cần xem kết quả cuối cùng, hãy mở `output/bank_ranking_2025.csv`.  
+> Nếu muốn kiểm tra vì sao một ngân hàng có số điểm cụ thể, xem thêm `output/group_scores_2025.csv` và `output/criterion_scores_2025.csv`.  
+> Nếu muốn kiểm tra cách tính điểm, xem `scoring_model.py`.
 
 ---
 
